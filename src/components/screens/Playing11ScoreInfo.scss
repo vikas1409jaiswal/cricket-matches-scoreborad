@@ -1,0 +1,21 @@
+.playing-11 {
+  text-align: center;
+  overflow-x: hidden;
+ 
+  h1{ 
+    background: linear-gradient(blue, black);
+    color: white;
+    width: fit-content;
+    margin-left: 35%;
+    padding: 0px 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+  }
+
+  .playing-11-list {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
+  }
+}

@@ -1,0 +1,52 @@
+{
+    "team_names": {
+        "India": "India",
+        "Australia": "Australia"
+    },
+    "cricket_terms": {
+        "balls": "Balls",
+        "catches": "Catches",
+        "conceded": "Conceded",
+        "did_not_bat": "dn Bat",
+        "did_not_bat_full": "did not bat",
+        "did_not_bowl": "dn Bowl",
+        "extras": "Extras",
+        "head_to_head": "Head to Head",
+        "match": "Match",
+        "most_runs": "Most Runs",
+        "most_wickets": "Most Wickets",
+        "no_result": "No Result",
+        "not_out": "not out",
+        "overs": "Overs",
+        "playing_11": "Playing 11",
+        "player_of_the_match": "Player Of The Match",
+        "points_table": {
+            "rank": "Rank",
+            "team": "Team",
+            "matches": "Matches",
+            "won": "Won",
+            "lost": "Lost",
+            "tied": "Tied",
+            "no_result": "No Result",
+            "points": "Points",
+            "net_run_rate": "NRR"
+        },
+        "runs": "Runs",
+        "sixes": "Sixes",
+        "tied": "Tied",
+        "top_5_catch_takers": "Top 5 Catch Takers",
+        "top_5_run_scorers": "Top 5 Run Scorers",
+        "top_5_six_hitters": "Top 5 Six Hitters",
+        "top_5_wicket_takers": "Top 5 Wicket Takers",
+        "top_catch_taker": "Top Catch Taker",
+        "top_run_scorer": "Top Run Scorer",
+        "top_six_hitter": "Top Six Hitter",
+        "top_wicket_taker": "Top Wicket Taker",
+        "total": "Total",
+        "wickets": "Wickets",
+        "won": "Won"
+    },
+    "random_words": {
+        "after_this_match": "after this match"
+    }
+}

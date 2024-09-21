@@ -1,0 +1,32 @@
+.text-3d {
+    text-shadow: 8px 8px 8px blue,
+        4px 4px 4px rgba(169, 89, 23, 0.737),
+        6px 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+.text-3d-2 {
+  text-shadow: 2px 2px 2px rgb(0, 255, 17),
+      4px 4px 4px rgba(169, 89, 23, 0.737),
+      6px 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+.flipped-image {
+    transform: scaleX(-1);
+    filter: FlipH;
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+  }
+
+  
+  @keyframes moving-text {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  .moving-text {
+    white-space: nowrap;
+    overflow: hidden;
+    animation: moving-text 30s linear infinite;
+  }

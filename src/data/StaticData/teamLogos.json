@@ -1,0 +1,1334 @@
+[
+  {
+    "teamName": "India",
+    "hindiTeamName": "भारत",
+    "shortName": "IND",
+    "primaryColor": "orange",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "cyan",
+    "teamFontColor": "darkblue"
+  },
+  {
+    "teamName": "India Women",
+    "hindiTeamName": "भारत",
+    "shortName": "INDW",
+    "primaryColor": "orange",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "cyan",
+    "teamFontColor": "darkblue"
+  },
+  {
+    "teamName": "India A",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Australia",
+    "hindiTeamName": "ऑस्ट्रेलिया",
+    "shortName": "AUS",
+    "primaryColor": "palegreen",
+    "secondaryColor": "yellow",
+    "teamBGColor": "yellow",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Australia Women",
+    "hindiTeamName": "ऑस्ट्रेलिया",
+    "shortName": "AUS",
+    "primaryColor": "palegreen",
+    "secondaryColor": "yellow",
+    "teamBGColor": "yellow",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "South Africa",
+    "hindiTeamName": "साउथ अफ़्रीका",
+    "shortName": "SA",
+    "primaryColor": "darkred",
+    "secondaryColor": "palegreen",
+    "teamBGColor": "palegreen",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "South Africa Under 19",
+    "hindiTeamName": "साउथ अफ़्रीका",
+    "shortName": "SA",
+    "primaryColor": "darkred",
+    "secondaryColor": "palegreen",
+    "teamBGColor": "palegreen",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "South Africa Women",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "yellow",
+    "secondaryColor": "palegreen",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "England",
+    "hindiTeamName": "इंग्लैंड",
+    "shortName": "ENG",
+    "primaryColor": "pink",
+    "secondaryColor": "cyan",
+    "teamBGColor": "darkblue",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "England Women",
+    "hindiTeamName": "इंग्लैंड",
+    "shortName": "ENGW",
+    "primaryColor": "pink",
+    "secondaryColor": "cyan",
+    "teamBGColor": "darkblue",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Sri Lanka",
+    "hindiTeamName": "श्रीलंका",
+    "shortName": "SL",
+    "primaryColor": "cyan",
+    "secondaryColor": "violet",
+    "teamBGColor": "purple",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Sri Lanka Women",
+    "hindiTeamName": "श्रीलंका",
+    "shortName": "SL",
+    "primaryColor": "cyan",
+    "secondaryColor": "violet",
+    "teamBGColor": "purple",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "West Indies",
+    "hindiTeamName": "",
+    "shortName": "WI",
+    "primaryColor": "yellow",
+    "secondaryColor": "salmon",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "West Indies Women",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "yellow",
+    "secondaryColor": "salmon",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "वेस्टइंडीज़",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "New Zealand",
+    "hindiTeamName": "न्यूज़ीलैंड",
+    "shortName": "NZ",
+    "primaryColor": "lightblue",
+    "secondaryColor": "silver",
+    "teamBGColor": "black",
+    "teamFontColor": "white"
+  },
+  {
+    "teamName": "Hong Kong",
+    "hindiTeamName": "",
+    "shortName": "HKG",
+    "primaryColor": "red",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Bermuda",
+    "hindiTeamName": "",
+    "shortName": "BER",
+    "primaryColor": "red",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Pakistan",
+    "hindiTeamName": "पाकिस्तान",
+    "shortName": "PAK",
+    "primaryColor": "goldenrod",
+    "secondaryColor": "yellowgreen",
+    "teamBGColor": "greenyellow",
+    "teamFontColor": "darkred"
+  },
+  {
+    "teamName": "Pakistan Women",
+    "hindiTeamName": "",
+    "shortName": "PAK",
+    "primaryColor": "greenyellow",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Pakistan A",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Ireland",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "silver",
+    "secondaryColor": "palegreen",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Ireland Under 19",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "black",
+    "secondaryColor": "palegreen",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Bangladesh",
+    "hindiTeamName": "बांग्लादेश",
+    "shortName": "BAN",
+    "primaryColor": "red",
+    "secondaryColor": "yellowgreen",
+    "teamBGColor": "darkgreen",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Bangladesh Women",
+    "hindiTeamName": "बांग्लादेश",
+    "shortName": "BAN",
+    "primaryColor": "red",
+    "secondaryColor": "yellowgreen",
+    "teamBGColor": "darkgreen",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Afghanistan",
+    "hindiTeamName": "अफ़ग़ानिस्तान",
+    "shortName": "AFG",
+    "primaryColor": "orange",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "skyblue",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Zimbabwe",
+    "hindiTeamName": "",
+    "shortName": "ZIM",
+    "primaryColor": "yellow",
+    "secondaryColor": "lightcoral",
+    "teamBGColor": "red",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Canada",
+    "hindiTeamName": "",
+    "shortName": "ZIM",
+    "primaryColor": "grey",
+    "secondaryColor": "lightcoral",
+    "teamBGColor": "red",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "United Arab Emirates",
+    "hindiTeamName": "",
+    "shortName": "UAE",
+    "primaryColor": "darkblue",
+    "secondaryColor": "pink",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Nepal",
+    "hindiTeamName": "",
+    "shortName": "NEP",
+    "primaryColor": "crimson",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Singapore",
+    "hindiTeamName": "",
+    "shortName": "SIN",
+    "primaryColor": "darkred",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Namibia",
+    "hindiTeamName": "",
+    "shortName": "NAM",
+    "primaryColor": "orange",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "black",
+    "teamFontColor": "white"
+  },
+  {
+    "teamName": "Scotland",
+    "hindiTeamName": "",
+    "shortName": "SCO",
+    "primaryColor": "cyan",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Papua New Guinea",
+    "hindiTeamName": "",
+    "shortName": "PNG",
+    "primaryColor": "orange",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Netherlands",
+    "hindiTeamName": "नीदरलैंड्स",
+    "shortName": "NED",
+    "primaryColor": "lightblue",
+    "secondaryColor": "orange",
+    "teamBGColor": "orange",
+    "teamFontColor": "darkblue"
+  },
+  {
+    "teamName": "United States of America",
+    "hindiTeamName": "",
+    "shortName": "USA",
+    "primaryColor": "lightblue",
+    "secondaryColor": "pink",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "USA",
+    "hindiTeamName": "",
+    "shortName": "USA",
+    "primaryColor": "cyan",
+    "secondaryColor": "pink",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Qatar",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Oman",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "darkred",
+    "secondaryColor": "orange",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Belgium",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Germany",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Rwanda",
+    "hindiTeamName": "",
+    "shortName": "RWN",
+    "primaryColor": "yellow",
+    "secondaryColor": "skyblue",
+    "teamBGColor": "skyblue",
+    "teamFontColor": "blue"
+  },
+  {
+    "teamName": "Uganda",
+    "hindiTeamName": "",
+    "shortName": "UGA",
+    "primaryColor": "red",
+    "secondaryColor": "yellow",
+    "teamBGColor": "yellow",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Czech Republic",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Kenya",
+    "hindiTeamName": "",
+    "shortName": "KENYA",
+    "primaryColor": "darkgreen",
+    "secondaryColor": "lightcoral",
+    "teamBGColor": "darkgreen",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Hungary",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Botswana",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Mozambique",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Eswatini",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Malawi",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Tanzania",
+    "hindiTeamName": "",
+    "shortName": "TAN",
+    "primaryColor": "darkblue",
+    "secondaryColor": "palegreen",
+    "teamBGColor": "greenyellow",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Nigeria",
+    "hindiTeamName": "",
+    "shortName": "NGA",
+    "primaryColor": "yellow",
+    "secondaryColor": "greenyellow",
+    "teamBGColor": "yellowgreen",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Galle Marvels",
+    "hindiTeamName": "",
+    "shortName": "GTx",
+    "primaryColor": "yellow",
+    "secondaryColor": "greenyellow",
+    "teamBGColor": "grey",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Colombo Strikers",
+    "hindiTeamName": "",
+    "shortName": "CLS",
+    "primaryColor": "cyan",
+    "secondaryColor": "pink",
+    "teamBGColor": "purple",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Jaffna Kings",
+    "hindiTeamName": "",
+    "shortName": "JK",
+    "primaryColor": "white",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "greenyellow",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Dambulla Sixers",
+    "hindiTeamName": "",
+    "shortName": "DBA",
+    "primaryColor": "cyan",
+    "secondaryColor": "yellow",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Kandy Falcons",
+    "hindiTeamName": "",
+    "shortName": "BLK",
+    "primaryColor": "orange",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "MI New York",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "orange",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Texas Super Kings",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "cyan",
+    "secondaryColor": "yellow",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Los Angeles Knight Riders",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "yellow",
+    "secondaryColor": "violet",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "San Francisco Unicorns",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Washington Freedom",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "cyan",
+    "secondaryColor": "grey",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Seattle Orcas",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "gray",
+    "secondaryColor": "greenyellow",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Durban Qalandars",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Johannesburg Buffaloes",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Surrey Jaguars",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Vancouver Knights",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Brampton Wolves",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Montreal Tigers",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "London Spirit",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Birmingham Phoenix",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Manchester Originals",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Super Northern Chargers",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Oval Invincibles",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Southern Braves",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Trent Rockets",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Welsh Fire",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "white",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Malaysia",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "black",
+    "secondaryColor": "yellow",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Sydney Sixers",
+    "hindiTeamName": "",
+    "shortName": "SS",
+    "primaryColor": "cyan",
+    "secondaryColor": "pink",
+    "teamBGColor": "pink",
+    "teamFontColor": "darkblue"
+  },
+  {
+    "teamName": "Melbourne Stars",
+    "hindiTeamName": "",
+    "shortName": "MSS",
+    "primaryColor": "purple",
+    "secondaryColor": "palegreen",
+    "teamBGColor": "darkgreen",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Brisbane Heat",
+    "hindiTeamName": "",
+    "shortName": "BH",
+    "primaryColor": "darkblue",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "darkblue",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Melbourne Renegades",
+    "hindiTeamName": "",
+    "shortName": "MR",
+    "primaryColor": "gold",
+    "secondaryColor": "orange",
+    "teamBGColor": "brown",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Perth Scorchers",
+    "hindiTeamName": "",
+    "shortName": "PS",
+    "primaryColor": "brown",
+    "secondaryColor": "orange",
+    "teamBGColor": "orange",
+    "teamFontColor": "blue"
+  },
+  {
+    "teamName": "Hobart Hurricanes",
+    "hindiTeamName": "",
+    "shortName": "HH",
+    "primaryColor": "blue",
+    "secondaryColor": "violet",
+    "teamBGColor": "purple",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Adelaide Strikers",
+    "hindiTeamName": "",
+    "shortName": "AS",
+    "primaryColor": "blue",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "cyan",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Sydney Thunder",
+    "hindiTeamName": "",
+    "shortName": "ST",
+    "primaryColor": "blue",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "palegreen",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Bhilwara Kings",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "blue",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "orange",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "India Capitals",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "blue",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "darkblue",
+    "teamFontColor": "red"
+  },
+  {
+    "teamName": "Manipal Tigers",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "blue",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "darkred",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Gujarat Giants",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "blue",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "pink",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Southern Superstars",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "blue",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "lightblue",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Urbanrisers Hyderabad",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "blue",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "yellow",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "New York Strikers",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "darkblue",
+    "secondaryColor": "pink",
+    "teamBGColor": "lightpink",
+    "teamFontColor": "darkblue"
+  },
+  {
+    "teamName": "Deccan Gladiators",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "purple",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "purple",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Northern Warriors",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "yellow",
+    "secondaryColor": "brown",
+    "teamBGColor": "brown",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Samp Army",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "purple",
+    "secondaryColor": "red",
+    "teamBGColor": "darkblue",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Delhi Bulls",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "blue",
+    "secondaryColor": "orange",
+    "teamBGColor": "red",
+    "teamFontColor": "darkblue"
+  },
+  {
+    "teamName": "Team Abu Dhabi",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "black",
+    "secondaryColor": "yellow",
+    "teamBGColor": "yellow",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Chennai Braves",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "black",
+    "secondaryColor": "cyan",
+    "teamBGColor": "cyan",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Bangla Tigers",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "purple",
+    "secondaryColor": "pink",
+    "teamBGColor": "pink",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Auckland Aces",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "black",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "pink",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Canterbury Kings",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "red",
+    "secondaryColor": "brown",
+    "teamBGColor": "pink",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Otago Volts",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "black",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "pink",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Wellington Firebirds",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "red",
+    "secondaryColor": "brown",
+    "teamBGColor": "pink",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Northern Brave",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "blue",
+    "secondaryColor": "orange",
+    "teamBGColor": "pink",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Central Stags",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "orange",
+    "secondaryColor": "palegreen",
+    "teamBGColor": "pink",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Durban Super Giants",
+    "hindiTeamName": "",
+    "shortName": "DSG",
+    "primaryColor": "orange",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "lightblue",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "MI Cape Town",
+    "hindiTeamName": "",
+    "shortName": "MICT",
+    "primaryColor": "yellow",
+    "secondaryColor": "violet",
+    "teamBGColor": "violet",
+    "teamFontColor": "darkblue"
+  },
+  {
+    "teamName": "Paarl Royals",
+    "hindiTeamName": "",
+    "shortName": "PR",
+    "primaryColor": "violet",
+    "secondaryColor": "pink",
+    "teamBGColor": "pink",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Pretoria Capitals",
+    "hindiTeamName": "",
+    "shortName": "PC",
+    "primaryColor": "gray",
+    "secondaryColor": "cyan",
+    "teamBGColor": "cyan",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Joburg Super Kings",
+    "hindiTeamName": "",
+    "shortName": "JSK",
+    "primaryColor": "palegreen",
+    "secondaryColor": "yellow",
+    "teamBGColor": "yellow",
+    "teamFontColor": "darkblue"
+  },
+  {
+    "teamName": "Sunrisers Eastern Cape",
+    "hindiTeamName": "",
+    "shortName": "SEC",
+    "primaryColor": "goldenrod",
+    "secondaryColor": "orange",
+    "teamBGColor": "orange",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Comilla Victorians",
+    "hindiTeamName": "",
+    "shortName": "CV",
+    "primaryColor": "yellow",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "white"
+  },
+  {
+    "teamName": "Durdanto Dhaka",
+    "hindiTeamName": "",
+    "shortName": "DRD",
+    "primaryColor": "yellow",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "lightblue",
+    "teamFontColor": "blue"
+  },
+  {
+    "teamName": "Chattogram Challengers",
+    "hindiTeamName": "",
+    "shortName": "CC",
+    "primaryColor": "darkred",
+    "secondaryColor": "violet",
+    "teamBGColor": "violet",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Sylhet Strikers",
+    "hindiTeamName": "",
+    "shortName": "SYS",
+    "primaryColor": "purple",
+    "secondaryColor": "pink",
+    "teamBGColor": "pink",
+    "teamFontColor": "darkblue"
+  },
+  {
+    "teamName": "Fortune Barishal",
+    "hindiTeamName": "",
+    "shortName": "BRSAL",
+    "primaryColor": "yellow",
+    "secondaryColor": "orange",
+    "teamBGColor": "orange",
+    "teamFontColor": "darkblue"
+  },
+  {
+    "teamName": "Rangpur Riders",
+    "hindiTeamName": "",
+    "shortName": "RRx",
+    "primaryColor": "cyan",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "darkblue",
+    "teamFontColor": "white"
+  },
+  {
+    "teamName": "Khulna Tigers",
+    "hindiTeamName": "",
+    "shortName": "KT",
+    "primaryColor": "lightblue",
+    "secondaryColor": "orange",
+    "teamBGColor": "blue",
+    "teamFontColor": "white"
+  },
+  {
+    "teamName": "Islamabad United",
+    "hindiTeamName": "",
+    "shortName": "IU",
+    "primaryColor": "orange",
+    "secondaryColor": "red",
+    "teamBGColor": "red",
+    "teamFontColor": "yelllow"
+  },
+  {
+    "teamName": "Lahore Qalandars",
+    "hindiTeamName": "",
+    "shortName": "LQ",
+    "primaryColor": "palegreen",
+    "secondaryColor": "yellowgreen",
+    "teamBGColor": "palegreen",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Peshawar Zalmi",
+    "hindiTeamName": "",
+    "shortName": "PZ",
+    "primaryColor": "silver",
+    "secondaryColor": "yellow",
+    "teamBGColor": "yellow",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Quetta Gladiators",
+    "hindiTeamName": "",
+    "shortName": "QG",
+    "primaryColor": "orange",
+    "secondaryColor": "brown",
+    "teamBGColor": "brown",
+    "teamFontColor": "white"
+  },
+  {
+    "teamName": "Karachi Kings",
+    "hindiTeamName": "",
+    "shortName": "KK",
+    "primaryColor": "cyan",
+    "secondaryColor": "red",
+    "teamBGColor": "blue",
+    "teamFontColor": "white"
+  },
+  {
+    "teamName": "Multan Sultans",
+    "hindiTeamName": "",
+    "shortName": "MS",
+    "primaryColor": "yellowgreen",
+    "secondaryColor": "green",
+    "teamBGColor": "darkblue",
+    "teamFontColor": "palegreen"
+  },
+  {
+    "teamName": "Mumbai Indians Women",
+    "hindiTeamName": "",
+    "shortName": "KT",
+    "primaryColor": "goldenrod",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "blue",
+    "teamFontColor": "white"
+  },
+  {
+    "teamName": "Delhi Capitals Women",
+    "hindiTeamName": "",
+    "shortName": "KT",
+    "primaryColor": "cyan",
+    "secondaryColor": "red",
+    "teamBGColor": "blue",
+    "teamFontColor": "white"
+  },
+  {
+    "teamName": "Gujarat Giants Women",
+    "hindiTeamName": "",
+    "shortName": "KT",
+    "primaryColor": "yellow",
+    "secondaryColor": "orange",
+    "teamBGColor": "blue",
+    "teamFontColor": "white"
+  },
+  {
+    "teamName": "UP Warriorz Women",
+    "hindiTeamName": "",
+    "shortName": "KT",
+    "primaryColor": "yellow",
+    "secondaryColor": "violet",
+    "teamBGColor": "blue",
+    "teamFontColor": "white"
+  },
+  {
+    "teamName": "Royal Challengers Bengaluru",
+    "hindiTeamName": "रॉयल चैलेंजर्स बेंगलुरु",
+    "shortName": "RCB",
+    "primaryColor": "silver",
+    "secondaryColor": "red",
+    "teamBGColor": "brown",
+    "teamFontColor": "blue"
+  },
+  {
+    "teamName": "Chennai Super Kings",
+    "hindiTeamName": "चेन्नई सुपर किंग्स",
+    "shortName": "CSK",
+    "primaryColor": "lightblue",
+    "secondaryColor": "yellow",
+    "teamBGColor": "yellow",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Punjab Kings",
+    "hindiTeamName": "पंजाब किंग्स",
+    "shortName": "PBKS",
+    "primaryColor": "yellow",
+    "secondaryColor": "orange",
+    "teamBGColor": "crimson",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Delhi Capitals",
+    "hindiTeamName": "दिल्ली कैपिटल्स",
+    "shortName": "DC",
+    "primaryColor": "pink",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "red",
+    "teamFontColor": "blue"
+  },
+  {
+    "teamName": "Kolkata Knight Riders",
+    "hindiTeamName": "कोलकाता नाइट राइडर्स",
+    "shortName": "KKR",
+    "primaryColor": "silver",
+    "secondaryColor": "violet",
+    "teamBGColor": "violet",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Sunrisers Hyderabad",
+    "hindiTeamName": "सनराइज़र्स हैदराबाद",
+    "shortName": "SRH",
+    "primaryColor": "yellowgreen",
+    "secondaryColor": "orange",
+    "teamBGColor": "orange",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Rajasthan Royals",
+    "hindiTeamName": "राजस्थान रॉयल्स",
+    "shortName": "RR",
+    "primaryColor": "cyan",
+    "secondaryColor": "pink",
+    "teamBGColor": "pink",
+    "teamFontColor": "blue"
+  },
+  {
+    "teamName": "Lucknow Super Giants",
+    "hindiTeamName": "लखनऊ सुपर जायंट्स",
+    "shortName": "LSG",
+    "primaryColor": "grey",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "lightblue",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Gujarat Titans",
+    "hindiTeamName": "गुजरात टाइटंस",
+    "shortName": "GT",
+    "primaryColor": "pink",
+    "secondaryColor": "cyan",
+    "teamBGColor": "skyblue",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Mumbai Indians",
+    "hindiTeamName": "मुंबई इंडियंस",
+    "shortName": "MI",
+    "primaryColor": "yellow",
+    "secondaryColor": "skyblue",
+    "teamBGColor": "blue",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Barbados Royals Women",
+    "hindiTeamName": "",
+    "shortName": "BAR-W",
+    "primaryColor": "cyan",
+    "secondaryColor": "violet",
+    "teamBGColor": "blue",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Guyana Amazon Warriors Women",
+    "hindiTeamName": "",
+    "shortName": "GAW-W",
+    "primaryColor": "greenyellow",
+    "secondaryColor": "lightcoral",
+    "teamBGColor": "blue",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Trinbago Knight Riders Women",
+    "hindiTeamName": "",
+    "shortName": "TKR-W",
+    "primaryColor": "yellow",
+    "secondaryColor": "brown",
+    "teamBGColor": "blue",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "St Lucia Kings",
+    "hindiTeamName": "",
+    "shortName": "SLK",
+    "primaryColor": "yellow",
+    "secondaryColor": "skyblue",
+    "teamBGColor": "skyblue",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Barbados Royals",
+    "hindiTeamName": "",
+    "shortName": "BR",
+    "primaryColor": "pink",
+    "secondaryColor": "violet",
+    "teamBGColor": "pink",
+    "teamFontColor": "darkblue"
+  },
+  {
+    "teamName": "St Kitts and Nevis Patriots",
+    "hindiTeamName": "",
+    "shortName": "STKNP",
+    "primaryColor": "greenyellow",
+    "secondaryColor": "red",
+    "teamBGColor": "greenyellow",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Trinbago Knight Riders",
+    "hindiTeamName": "",
+    "shortName": "TKR",
+    "primaryColor": "gold",
+    "secondaryColor": "red",
+    "teamBGColor": "violet",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Guyana Amazon Warriors",
+    "hindiTeamName": "",
+    "shortName": "GAW",
+    "primaryColor": "palegreen",
+    "secondaryColor": "red",
+    "teamBGColor": "crimson",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Antigua and Barbuda Falcons",
+    "hindiTeamName": "",
+    "shortName": "ABF",
+    "primaryColor": "cyan",
+    "secondaryColor": "silver",
+    "teamBGColor": "grey",
+    "teamFontColor": "black"
+  }
+]

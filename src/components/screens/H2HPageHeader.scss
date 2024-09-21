@@ -1,0 +1,26 @@
+.h2h-result-summary-header {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    margin: 10px;
+
+    div.h2h-banner {
+        background: linear-gradient(black, blue);
+        color: white;
+        margin: 10px;
+        border: 5px solid white;
+        border-radius: 10px 30px 10px 30px;
+    }
+
+    p {
+        font-size: 70px;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    p.h2h-teams-name {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 0;
+    }
+}

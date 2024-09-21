@@ -1,0 +1,116 @@
+.match-summary-container{
+    padding-top: 10px;
+    background: url("https://wallpapercave.com/wp/wp3049846.jpg");
+    height: 860px;
+
+    .summary-header {
+        display: grid;
+        grid-template-columns: 3fr 10fr 3fr;
+        margin: 0px 100px;
+        border-radius: 10px;
+        height: 100px;
+
+        img{
+            border-radius: 10px;
+            height: 90px;
+            width: 90px;
+            margin: auto;
+            background-color: white;
+            padding: 5px;
+            box-shadow: 5px 5px silver;
+        }
+
+        p.match-title{
+            text-align: center;
+            font-size: 50px;
+            font-weight: 700;
+            border-radius: 10px;
+            margin: 0px;
+            background: linear-gradient(black, blue);
+            color: white;
+            border: 4px solid white;
+
+            p{
+                background-color: greenyellow;
+                color: black;
+                font-size: 14px;
+                width: fit-content;
+                margin: auto;
+                padding: 5px;
+                border-radius: 5px;
+            }
+        }
+    }
+    .team-summary{
+        margin: 10px 50px;
+        height: 320px;
+
+        .team-summary-header{
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            border-radius: 10px 30px 10px 30px;
+            background: linear-gradient(darkred, black);
+            color: white;
+            margin: 10px 0px;
+            height: 70px;
+            border: 4px solid white;
+
+            p{
+                margin: 10px;
+                font-weight: 700;
+                font-size: 40px;
+                padding-left: 30px;
+            }
+
+            .team-total-score{
+                background: linear-gradient(green, black);
+                border-radius: 10px 30px 10px 30px;
+                border: 2px solid white;
+            }
+        }
+
+        .team-summary-body{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            .team-summary-batter, .team-summary-bowler {
+                display: grid;
+                gap: 10px;
+                .batter-score, .bowler-score {
+                    display: grid;
+                    grid-template-columns: 4fr 1fr;
+                    background: linear-gradient(blue, black);
+                    color: white;
+                    margin-right: 20px;
+                    padding-left: 20px;
+                    border-radius: 10px 30px 10px 30px;
+                    font-size: 20px;
+                    font-weight: 700;
+                    border: 4px solid white;
+
+                    .score-block{
+                        border-radius: 10px 30px 10px 30px;
+                        background-color: darkred;
+                        width: 150px;
+                        padding: 5px 10px 5px 40px;
+                        margin: 8px;
+                        font-size: 30px;
+                        border: 2px solid white;
+                    }
+                }
+            }
+        }
+    }
+
+    .match-result{
+        border-radius: 10px 30px 10px 30px;
+        background: linear-gradient(darkred, black);
+        margin: 8px 50px;
+        font-size: 40px;
+        font-weight: 700;
+        border: 4px solid white;
+        padding: 10px 30px;
+        color: white;
+        text-align: center;
+    }
+}

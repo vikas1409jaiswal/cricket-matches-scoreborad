@@ -1,0 +1,77 @@
+.match-basic-info-container {
+    text-align: center;
+    overflow-y: hidden;
+    position: relative;
+
+    .world-cup-image{
+        position: absolute;
+        margin-top: -800px;
+        margin-left: -360px;
+    }
+
+    .basic-match-number {
+        background-image: url(http://localhost:3012/textures/1002.jpg);
+        background-size: cover;
+        color: white;
+        font-size: 60px;
+        font-weight: 700;
+        margin: 10px;
+        border: 4px solid white;
+        border-radius: 10px 30px;
+        height: 80px;
+    }
+
+    .basic-match-series {
+        background: linear-gradient(darkgreen, black);
+        font-size: 40px;
+        margin: 10px;
+        border: 4px solid white;
+        color: white;
+        border-radius: 10px 30px;
+        font-weight: 700;
+        height: 60px;
+    }
+
+    .basic-match-date p,
+    .basic-match-venue p{
+        background: linear-gradient(darkblue, black);
+        color: white;
+        font-size: 35px;
+        margin: 10px;
+        padding: 10px;
+        border: 4px solid white;
+        border-radius: 10px 30px;
+        font-weight: 700;
+    }
+
+    .basic-match-venue p{
+        background: linear-gradient(purple, black);
+    }
+
+    .match-title {
+        display: grid;
+        grid-template-columns: 5fr 1fr 5fr;
+        margin: 10px;
+        height: 500px;
+
+        div {
+            margin: 20px;
+        }
+
+        h1{
+            margin-top: 80px;
+            font-size: 60px;
+            color: white;
+        }
+
+        .vs-sign {
+            padding-top: 150px;
+
+            a{
+             font-size: 150px;
+             font-weight: bold;
+             color: white;
+            }
+        }
+    }
+}

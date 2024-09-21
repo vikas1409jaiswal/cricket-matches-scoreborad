@@ -1,0 +1,52 @@
+{
+    "team_names": {
+        "India": "India",
+        "Australia": "Australia"
+    },
+    "cricket_terms": {
+        "balls": "गेंद",
+        "catches": "कैच",
+        "conceded": "रन खर्चे",
+        "did_not_bat": "बल्लेबाज़ी नहीं की",
+        "did_not_bat_full": "बल्लेबाज़ी नहीं की",
+        "did_not_bowl": "गेंदबाज़ी नहीं की",
+        "extras": "अतिरिक्त",
+        "head_to_head": "आमने-सामने",
+        "match": "मैच",
+        "most_runs": "सबसे ज्यादा रन",
+        "most_wickets": "सबसे ज्यादा विकेट",
+        "no_result": "बेनतीजा",
+        "not_out": "नाबाद",
+        "overs": "ओवर",
+        "playing_11": "अंतिम ग्यारह",
+        "player_of_the_match": "प्लेयर ऑफ़ द मैच",
+        "points_table": {
+            "rank": "वरीयता",
+            "team": "टीम",
+            "matches": "मैच",
+            "won": "जीत",
+            "lost": "हार",
+            "tied": "टाई",
+            "no_result": "बेनतीजा",
+            "points": "पॉइंट्स",
+            "net_run_rate": "नेट रन रेट"
+        },
+        "runs": "रन",
+        "sixes": "छक्के",
+        "tied": "टाई",
+        "top_5_catch_takers": "शीर्ष 5 कैच लेने वाले",
+        "top_5_run_scorers": "शीर्ष 5 रन बनाने वाले",
+        "top_5_six_hitters": "शीर्ष 5 छक्का मारने वाले",
+        "top_5_wicket_takers": "शीर्ष 5 विकेट लेने वाले",
+        "top_catch_taker": "सबसे ज्यादा कैच लेने वाले",
+        "top_run_scorer": "सबसे ज्यादा रन बनाने वाले",
+        "top_six_hitter": "सबसे ज्यादा छक्का मारने वाले",
+        "top_wicket_taker": "सबसे ज्यादा विकेट लेने वाले",
+        "total": "कुल",
+        "wickets": "विकेट",
+        "won": "जीता"
+    },
+    "random_words": {
+        "after_this_match": "इस मैच के बाद"
+    }
+}

@@ -1,0 +1,41 @@
+.total-score-card {
+    width: 400px;
+    background: none;
+
+    .inning-number {
+        font-size: 60px;
+        font-weight: 700;
+        border: 2px solid white;
+        border-radius: 10px;
+        background: linear-gradient(black, red);
+        color: white;
+        width: 350px;
+        margin-left: 10px;
+    }
+
+    .full-score-details {
+        display: grid;
+        gap: 10px;
+        padding: 10px;
+        margin-top: 40px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+        >div.key {
+            font-size: 60px;
+            font-weight: 700;
+            border: 2px solid white;
+            border-radius: 10px;
+            background: linear-gradient(black, green);
+            color: white;
+        }
+
+        >div.value {
+            font-size: 60px;
+            font-weight: 700;
+            border: 2px solid white;
+            border-radius: 10px;
+            background: linear-gradient(black, blue);
+            color: white;
+        }
+    }
+}

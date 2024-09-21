@@ -1,0 +1,64 @@
+.team-playing-11-container{
+    position: relative;
+    z-index: 1;
+
+    .playing-11-header{
+        margin: 10px;
+        text-align: center;
+        font-size: 50px;
+        border: 5px solid white;
+        border-radius: 10px;
+        background: linear-gradient(black, blue);
+        color: white;
+        font-weight: bold;
+    }
+    
+    .playing-11-squad {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        text-align: center;
+        margin: 10px;
+        padding: 10px;
+        grid-gap: 10px;
+        position: relative;
+    
+        .player-card {
+            border: 1px solid black;
+            border-radius: 10px;
+            
+            img{
+                background-image: url(http://localhost:3012/textures/1000.jpg);
+                background-size: cover;
+                margin: 5px 0px;
+                border-radius: 10px;
+                border: 1px solid white;
+            }
+
+            p.player-name{
+                background-color: black;
+                margin: 0px 10px 5px;
+                border-radius: 5px;
+                
+                a{
+                    color: white;
+                    text-decoration: none;
+                    font-weight: 700;
+                    font-size: 20px;
+                }
+            }
+
+            p.player-role{
+                background-color: black;
+                color: white;
+                margin: 0px 10px 10px;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    .team-rotating-cylinder {
+        position: absolute;
+        margin-top: -250px;
+        margin-left: 1325px;
+    }
+}
