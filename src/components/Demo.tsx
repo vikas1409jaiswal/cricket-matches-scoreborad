@@ -16,7 +16,6 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import india from "./../images/india.png";
-import font from "./Font.json";
 
 export const Demo = ({}) => {
   return <Scene isFullscreen={true} />;

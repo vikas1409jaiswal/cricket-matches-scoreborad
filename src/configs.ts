@@ -1,6 +1,6 @@
 export const config = {
   language: "eng",
-  muteSpeech: false,
+  muteSpeech: true,
   pageSize: {
     height: 880,
     width: 1540,

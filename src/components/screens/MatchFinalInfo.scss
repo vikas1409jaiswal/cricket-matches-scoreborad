@@ -30,7 +30,8 @@
     }
 
     .match-result{
-        background: linear-gradient(black, darkgreen);
+        background-image: url(http://localhost:3012/textures/1002.jpg);
+        background-size: cover;
         height: 100px;
         font-size: 70px;
         font-weight: 700;

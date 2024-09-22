@@ -8,11 +8,12 @@
     margin: auto;
     
     .number{
-        color: black;
-        background-color: rgb(43, 219, 81);
+        color: white;
+        background-image: url(http://localhost:3012/textures/1004.jpg);
+        background-size: cover;
         border-radius: 50%;
         text-align: center;
         padding: 10px;
-        border: 10px solid black;
+        border: 10px solid white;
     }
 }

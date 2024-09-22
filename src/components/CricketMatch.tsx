@@ -126,7 +126,9 @@ export const CricketMatch: React.FC<CricketMatchProps> = ({
         href={selectedMatchUrl}
         matchNumber={matchNo}
         customMatchNumber={
-          format === Format.T20_DOMESTIC ? currMatchNumber.toString() : ""
+          format === Format.T20_DOMESTIC
+            ? `Match Number ${currMatchNumber}`
+            : ""
         }
         matchTitle={matchTitle}
         matchDate={matchDays}

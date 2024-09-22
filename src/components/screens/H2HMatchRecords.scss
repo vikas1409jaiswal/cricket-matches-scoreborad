@@ -26,7 +26,8 @@
                     font-size: 40px;
                     text-align: center;
                     font-weight: bold;
-                    background: linear-gradient(darkred, black);
+                    background-image: url(http://localhost:3012/textures/1003.jpg);
+                    background-size: cover;
                     border-radius: 10px 30px 10px 30px;                 
                     color: white;
                     border: 2px solid white;
@@ -45,7 +46,8 @@
                 .key{
                     text-align: center;
                     padding-top: 10px;
-                    background: linear-gradient(black, darkgreen);
+                    background-image: url(http://localhost:3012/textures/1004.jpg);
+                    background-size: cover;
                     color: white;
                     font-weight: bolder;
                     border: 2px solid white;
@@ -69,7 +71,8 @@
                     font-size: 60px;
                     font-weight: bold;
                     padding-top: 20px;
-                    background: linear-gradient(black, darkgreen);
+                    background-image: url(http://localhost:3012/textures/1004.jpg);
+                    background-size: cover;
                     color: white;
                     border: 2px solid white;
                     border-radius: 10px 30px 10px 30px;

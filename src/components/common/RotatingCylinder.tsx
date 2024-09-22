@@ -99,8 +99,8 @@ export const RotatingCylinder: React.FC<RotatingCylinderProps> = ({
               alignItems: "center",
               borderRadius: "10px",
               padding: "0px",
-              background: "none",
-              backgroundColor: "white",
+              backgroundImage: "url(http://localhost:3012/textures/1006.jpg)",
+              backgroundSize: "cover",
               border: "2px solid black",
               marginTop: 10,
             }}
@@ -113,7 +113,6 @@ export const RotatingCylinder: React.FC<RotatingCylinderProps> = ({
                 maxHeight: height,
                 width: "95%",
                 height: "95%",
-                backgroundColor: "white",
               }}
             />
           </div>
