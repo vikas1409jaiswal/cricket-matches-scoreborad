@@ -17,18 +17,26 @@ const domesticTournaments: string[] = [
   "Lanka premier league 2025",
 ];
 
+const internationalODITournaments: string[] = [
+  "ICC Men's Cricket World Cup League 2 2023-2027",
+];
+
+const internationalT20Tournaments: string[] = ["Canada T20 Tri-Series"];
+
 const venueCountries = [
-  "England",
-  "Pakistan",
-  "New Zealand",
-  "India",
-  "USA",
-  "South Africa",
   "Australia",
   "Bangladesh",
-  "Sri Lanka",
+  "Canada",
+  "England",
+  "India",
   "Ireland",
+  "Namibia",
+  "New Zealand",
+  "Pakistan",
+  "South Africa",
+  "Sri Lanka",
   "UAE",
+  "USA",
   "West Indies",
 ];
 
@@ -60,6 +68,10 @@ export const MatchConfigurations: React.FC<MatchConfigurationsProps> = ({
   const [domesticTournament, setDomesticTournament] = useState<string>(
     domesticTournaments[0]
   );
+  const [internationalODITournament, setInternationalODITournament] =
+    useState<string>(internationalODITournaments[0]);
+  const [internationalT20Tournament, setInternationalT20Tournament] =
+    useState<string>(internationalT20Tournaments[0]);
   const [venueCountry, setVenueCountry] = useState<string>(venueCountries[0]);
   const [currMatchNumber, setCurrMatchNumber] = useState<string>("1");
 
@@ -174,6 +186,33 @@ export const MatchConfigurations: React.FC<MatchConfigurationsProps> = ({
               value={domesticTournament}
             >
               {domesticTournaments.map((t) => (
+                <option value={t}>{t}</option>
+              ))}
+            </select>
+          </div>
+        )}
+      {seriesType === SeriesType.TOURNAMENT && format === Format.ODI && (
+        <div>
+          <label>Tournaments</label>
+          <select
+            onChange={(e) => setInternationalODITournament(e.target.value)}
+            value={internationalODITournament}
+          >
+            {internationalODITournaments.map((t) => (
+              <option value={t}>{t}</option>
+            ))}
+          </select>
+        </div>
+      )}
+      {seriesType === SeriesType.TOURNAMENT &&
+        format === Format.T20_INTERNATIONAL && (
+          <div>
+            <label>Tournaments</label>
+            <select
+              onChange={(e) => setInternationalT20Tournament(e.target.value)}
+              value={internationalT20Tournament}
+            >
+              {internationalT20Tournaments.map((t) => (
                 <option value={t}>{t}</option>
               ))}
             </select>

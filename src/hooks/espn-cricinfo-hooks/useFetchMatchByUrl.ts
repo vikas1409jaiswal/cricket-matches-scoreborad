@@ -363,7 +363,7 @@ export const useFetchMatchByUrl = (url: string): CricketMatch => {
         ) as NodeListOf<HTMLTableCellElement>;
         const pName = tr?.querySelector("td")?.textContent as string;
         const pHref = tr?.querySelector("td a")?.getAttribute("href") as string;
-        !(pName.includes("TOTAL") || pName === "कुल") &&
+        !(pName.includes("Total") || pName === "कुल") &&
           !(
             pName.includes("Fall of wickets:") || pName?.includes("विकेट पतन:")
           ) &&
@@ -389,7 +389,7 @@ export const useFetchMatchByUrl = (url: string): CricketMatch => {
             sixes: parseInt(scoreSelector[6]?.textContent as string),
           } as Batsman);
 
-        if ((pName.includes("TOTAL") || pName === "कुल") && teamDetails) {
+        if ((pName.includes("Total") || pName === "कुल") && teamDetails) {
           teamDetails["totalScore"] = `${
             scoreSelector?.item(2)?.textContent
           }::${scoreSelector?.item(1)?.textContent}`;
