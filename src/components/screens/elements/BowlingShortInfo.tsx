@@ -1,6 +1,6 @@
 import React from "react";
-import { Bowler } from "./../../../models/espn-cricinfo-models/CricketMatchModels";
-import { config } from "../../../configs";
+import { Bowler } from "../../../models/espn-cricinfo-models/CricketMatch";
+import { config, Language } from "../../../configs";
 
 import "./BBShortInfo.scss";
 import { useTranslation } from "react-i18next";
@@ -43,7 +43,9 @@ export const BowlingShortInfo: React.FC<BowlingShortInfoProps> = ({
       ) : (
         <span
           style={
-            config.language === "hindi" ? { fontSize: 40 } : { fontSize: 50 }
+            config.language === Language.Hindi
+              ? { fontSize: 40 }
+              : { fontSize: 50 }
           }
         >
           {t("cricket_terms.did_not_bowl")}

@@ -1,7 +1,7 @@
 import React from "react";
 import { motion, useAnimation } from "framer-motion";
 import teamLogos from "./../../../data/StaticData/teamLogos.json";
-import { config } from "../../../configs";
+import { config, Language } from "../../../configs";
 
 interface PlayerImageProps {
   alt: string;
@@ -27,7 +27,7 @@ export const PlayerImage: React.FC<PlayerImageProps> = ({
   const control = useAnimation();
 
   const teamNameLocal =
-    config.language === "hindi"
+    config.language === Language.Hindi
       ? teamLogos.find((x) => x.hindiTeamName === teamName)?.teamName
       : teamName;
   const imgSrc = `http://localhost:3012/images/${teamNameLocal

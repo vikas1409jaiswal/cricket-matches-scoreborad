@@ -4,11 +4,12 @@ import {
   Batsman,
   Bowler,
   CricketMatchTest,
-} from "../../models/espn-cricinfo-models/CricketMatchModels";
+} from "../../models/espn-cricinfo-models/CricketMatch";
 import axios, { AxiosResponse } from "axios";
-import { config } from "../../configs";
+import { config, Language } from "../../configs";
 import teamLogos from "./../../data/StaticData/teamLogos.json";
-import { useFetchPlaying11, useFetchPointsTable } from "./useFetchMatchByUrl";
+import { useFetchPlaying11 } from "./useFetchPlaying11";
+import { useFetchPointsTable } from "./useFetchPointsTable";
 
 const fetchTestCricketMatch = (
   url: string
@@ -140,11 +141,10 @@ export const useFetchTestMatchByUrl = (matchUrl: string) => {
       href: potmHref,
       teamName: potmTeamName,
     },
-    matchNo,
+    matchNumber: matchNo,
     matchDays,
     matchTitle: `${team1Name} vs ${team2Name}`,
     venue: tableData?.querySelector("span")?.innerHTML as string,
-    matchDate: "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     tossWinner: tossDetail.split(",")[0],
     tossDecision: tossDetail,
     result: headerData?.querySelector("p > span")?.innerHTML as string,
@@ -156,7 +156,7 @@ export const useFetchTestMatchByUrl = (matchUrl: string) => {
         name: team1Name,
         uuid: "",
         logoUrl: `http://localhost:3012/images-team-logos/${
-          config.language === "hindi"
+          config.language === Language.Hindi
             ? teamLogos
                 .find((x) => x.hindiTeamName === team1Name)
                 ?.teamName?.replaceAll(" ", "-")
@@ -186,7 +186,7 @@ export const useFetchTestMatchByUrl = (matchUrl: string) => {
         name: team2Name,
         uuid: "",
         logoUrl: `http://localhost:3012/images-team-logos/${
-          config.language === "hindi"
+          config.language === Language.Hindi
             ? teamLogos
                 .find((x) => x.hindiTeamName === team2Name)
                 ?.teamName?.replaceAll(" ", "-")
@@ -237,7 +237,7 @@ export const useFetchTestMatchByUrl = (matchUrl: string) => {
         ) as NodeListOf<HTMLTableCellElement>;
         const pName = tr?.querySelector("td")?.textContent as string;
         const pHref = tr?.querySelector("td a")?.getAttribute("href") as string;
-        !pName.includes("TOTAL") &&
+        !pName.includes("Total") &&
           !pName.includes("Fall of wickets:") &&
           !pName.includes("Extras") &&
           (!pName.includes("Did not bat:") || !pName.includes("Yet to bat:")) &&
@@ -257,7 +257,7 @@ export const useFetchTestMatchByUrl = (matchUrl: string) => {
             sixes: parseInt(scoreSelector[6]?.textContent as string),
           } as Batsman);
 
-        if ((pName.includes("TOTAL") || pName === "कुल") && teamDetails) {
+        if ((pName.includes("Total") || pName === "कुल") && teamDetails) {
           teamDetails.inning1["totalScore"] = `${
             scoreSelector?.item(2)?.textContent
           }::${scoreSelector?.item(1)?.textContent}`;
@@ -348,7 +348,7 @@ export const useFetchTestMatchByUrl = (matchUrl: string) => {
         ) as NodeListOf<HTMLTableCellElement>;
         const pName = tr?.querySelector("td")?.textContent as string;
         const pHref = tr?.querySelector("td a")?.getAttribute("href") as string;
-        !pName.includes("TOTAL") &&
+        !pName.includes("Total") &&
           !pName.includes("Fall of wickets:") &&
           !pName.includes("Extras") &&
           (!pName.includes("Did not bat:") || !pName.includes("Yet to bat:")) &&
@@ -368,7 +368,7 @@ export const useFetchTestMatchByUrl = (matchUrl: string) => {
             sixes: parseInt(scoreSelector[6]?.textContent as string),
           } as Batsman);
 
-        if ((pName.includes("TOTAL") || pName === "कुल") && teamDetails) {
+        if ((pName.includes("Total") || pName === "कुल") && teamDetails) {
           teamDetails.inning2["totalScore"] = `${
             scoreSelector?.item(2)?.textContent
           }::${scoreSelector?.item(1)?.textContent}`;

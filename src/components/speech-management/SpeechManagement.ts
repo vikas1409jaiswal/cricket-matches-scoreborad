@@ -1,23 +1,63 @@
 import { TFunction } from "i18next";
-import { config } from "../../configs";
-import { PointsTableRow } from "../../models/espn-cricinfo-models/CricketMatchModels";
+import { config, Language } from "../../configs";
+import { PointsTableRow } from "../../models/espn-cricinfo-models/PointsTable";
 import { getNameFromHref } from "../../utils/ReusableFuctions";
 import { speakText } from "../common/SpeakText";
 import {
-  TopCatchTaker,
-  TopRunScorer,
-  TopSixHitter,
-  TopWicketTaker,
-} from "../../hooks/espn-cricinfo-hooks/useFetchTopPlayers";
+  TopCatchTakerTournament,
+  TopRunScorerTournament,
+  TopSixHitterTournament,
+  TopWicketTakerTournament,
+} from "../../models/espn-cricinfo-models/TournamentTopPlayers";
 
 export const speeches = {
+  "match-intro-info": (
+    matchNumber: string,
+    team1Name: string,
+    team2Name: string,
+    matchSpeech: string,
+    tossWinner: string,
+    tossResult: string
+  ) => {
+    if (config.language === Language.Hindi) {
+      speakText(
+        `${matchNumber
+          ?.replace("WODI", "Women One day International")
+          ?.replace("WT20I", "Women T Twenty International")
+          ?.replace("ODI", "One day International")
+          ?.replace("T20I", "T Twenty International")
+          ?.replace("टी20", "T Twenty")
+          ?.replace(
+            "नं.",
+            "नंबर"
+          )}, ${team1Name} बनाम ${team2Name} - ${matchSpeech}, ${tossWinner} ने टॉस जीता, ${tossResult}`
+      );
+    } else {
+      speakText(
+        `${matchNumber
+          ?.replace("WODI", "Women One day International")
+          ?.replace("YODI", "Youth One day International")
+          ?.replace("WT20I", "Women T Twenty International")
+          ?.replace("WTest", "Women test")
+          ?.replace("ODI", "One day International")
+          ?.replace("T20I", "T Twenty International")
+          ?.replace(
+            "no.",
+            "number"
+          )}, ${team1Name} versus ${team2Name} - ${matchSpeech?.replace(
+          "2024/25",
+          "2024 twenty five"
+        )}, ${tossWinner} won the toss, ${tossResult}`
+      );
+    }
+  },
   "player-score-info": (
     playerName: string,
     runs: number | undefined,
     wickets: number | undefined
   ) => {
     const runSpeech =
-      config.language === "hindi"
+      config.language === Language.Hindi
         ? runs
           ? `${runs} रन`
           : runs === 0
@@ -29,7 +69,7 @@ export const speeches = {
         ? 0
         : "did not bat";
     const wickstSpeech =
-      config.language === "hindi"
+      config.language === Language.Hindi
         ? wickets
           ? `${wickets} विकेट`
           : wickets === 0
@@ -48,7 +88,7 @@ export const speeches = {
     teamName: string,
     [total, wickets, overs]: string[]
   ) => {
-    if (config.language === "hindi") {
+    if (config.language === Language.Hindi) {
       speakText(
         `${teamName} कुल score,  ${parseFloat(
           overs
@@ -56,7 +96,12 @@ export const speeches = {
       );
     } else {
       speakText(
-        `${teamName} total inning score ${total} at loss of ${wickets} wickets, after ${overs}`
+        `${teamName} total inning score ${total} at loss of ${wickets?.replace(
+          "d",
+          ""
+        )} wickets, after ${overs}, ${
+          wickets.includes("d") ? "inning declared" : ""
+        }`
       );
     }
   },
@@ -64,7 +109,7 @@ export const speeches = {
     speakText(`${matchResult
       ?.replace("(W)", "Women")
       ?.replace("WMN", "Women")
-      ?.replace("S Africa", "South Africa")
+      ?.replace("SA Women", "South Africa Women")
       ?.replace("AUS", "Australia")
       ?.replace("NZ", "New Zealand")
       ?.replace("W Indies", "West Indies")}
@@ -79,7 +124,7 @@ export const speeches = {
   ) => {
     const hasBatted = runs !== 0 && balls !== 0;
     const hasBowled = wickets !== 0 && conceded !== 0;
-    if (config.language === "hindi") {
+    if (config.language === Language.Hindi) {
       const batPer = hasBatted ? `${runs} रन बनाये ${balls} गेंद मे` : "";
       const and = hasBatted && hasBowled ? " और " : "";
       const bowPer = hasBowled
@@ -101,7 +146,7 @@ export const speeches = {
     speakText(seriesResult);
   },
   "points-table-info": (pointsTableRows: PointsTableRow[]) => {
-    if (config.language === "hindi") {
+    if (config.language === Language.Hindi) {
       speakText(
         `अंक तालिका, ${pointsTableRows[0].teamName} ${pointsTableRows[0].points} अंकों के साथ शीर्ष पर है.`
       );
@@ -116,7 +161,7 @@ export const speeches = {
   },
   top_5_run_scorers: (
     tournamentName: string,
-    runScorers: TopRunScorer[],
+    runScorers: TopRunScorerTournament[],
     t: TFunction
   ) => {
     speakText(
@@ -129,7 +174,10 @@ export const speeches = {
       )}, ${runScorers[0]?.runs} ${t("cricket_terms.runs")}`
     );
   },
-  top_5_wicket_takers: (wicketTakers: TopWicketTaker[], t: TFunction) => {
+  top_5_wicket_takers: (
+    wicketTakers: TopWicketTakerTournament[],
+    t: TFunction
+  ) => {
     speakText(
       `${t("cricket_terms.top_wicket_taker")?.replace(
         "5 ",
@@ -139,7 +187,7 @@ export const speeches = {
       } ${t("cricket_terms.wickets")}`
     );
   },
-  top_5_six_hitters: (mostSixes: TopSixHitter[], t: TFunction) => {
+  top_5_six_hitters: (mostSixes: TopSixHitterTournament[], t: TFunction) => {
     speakText(
       `${t("cricket_terms.top_six_hitter")?.replace(
         "5 ",
@@ -149,7 +197,10 @@ export const speeches = {
       } ${t("cricket_terms.sixes")}`
     );
   },
-  top_5_catch_takers: (mostCatches: TopCatchTaker[], t: TFunction) => {
+  top_5_catch_takers: (
+    mostCatches: TopCatchTakerTournament[],
+    t: TFunction
+  ) => {
     speakText(
       `${t("cricket_terms.top_catch_taker")?.replace(
         "5 ",

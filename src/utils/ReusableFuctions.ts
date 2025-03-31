@@ -1,4 +1,4 @@
-import { config } from "../configs";
+import { config, Language } from "../configs";
 import etohjson from "./../../src/data/StaticData/englishToHindi.json";
 
 export const toCapitalCase = (inputString: string) => {
@@ -29,7 +29,7 @@ export const getNameFromHref = (
     nameArr?.length > 0
       ? nameArr
           .map((x, i, a) =>
-            i !== a?.length - 1 && a.join(" ")?.length > (splitLength || 14)
+            i !== a?.length - 1 && a.join(" ")?.length > (splitLength || 25)
               ? `${x[0]}.`
               : x
           )
@@ -40,7 +40,9 @@ export const getNameFromHref = (
 
   hindiName === undefined && playerArr.push(nameArr?.join(" "));
 
-  return (lang === "hindi" ? hindiName : toCapitalCase(engName)) as string;
+  return (
+    lang === Language.Hindi ? hindiName : toCapitalCase(engName)
+  ) as string;
 };
 
 export const downloadImage = (url: string, filename: string) => {

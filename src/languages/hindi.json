@@ -4,6 +4,7 @@
         "Australia": "Australia"
     },
     "cricket_terms": {
+        "vs": "बनाम",
         "balls": "गेंद",
         "catches": "कैच",
         "conceded": "रन खर्चे",
@@ -13,12 +14,13 @@
         "extras": "अतिरिक्त",
         "head_to_head": "आमने-सामने",
         "match": "मैच",
+        "match_number": "मैच नंबर",
         "most_runs": "सबसे ज्यादा रन",
         "most_wickets": "सबसे ज्यादा विकेट",
         "no_result": "बेनतीजा",
         "not_out": "नाबाद",
         "overs": "ओवर",
-        "playing_11": "अंतिम ग्यारह",
+        "playing_11": "प्लेइंग स्क्वाड",
         "player_of_the_match": "प्लेयर ऑफ़ द मैच",
         "points_table": {
             "rank": "वरीयता",

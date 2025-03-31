@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { CricketMatch } from "../../models/espn-cricinfo-models/CricketMatchModels";
+import { CricketMatch } from "../../models/espn-cricinfo-models/CricketMatch";
 
 import "./YoutubePlanner.scss";
 import { useBestTitle } from "../../hooks/open-ai-hooks/useBestTitle";

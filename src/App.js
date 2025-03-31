@@ -3,7 +3,6 @@ import { CricketMatchHomePage } from "./components/CricketMatchHomePage";
 import { Format } from "./models/enums/CricketFormat";
 
 import "./i18n";
-
 import "./App.scss";
 
 const client = new QueryClient();

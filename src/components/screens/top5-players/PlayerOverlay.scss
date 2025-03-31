@@ -1,0 +1,11 @@
+.player-overlay{
+    position: absolute;
+    margin: 30px;
+    height: 600px;
+    width: 1000px;
+    background-image: url(http://localhost:3012/textures/1003.jpg);
+    background-size: cover;
+    z-index: 5;
+    border: 5px solid greenyellow;
+    border-radius: 10px;
+}

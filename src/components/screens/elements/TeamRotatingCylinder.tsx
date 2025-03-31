@@ -32,9 +32,7 @@ export const TeamRotatingCylinder: React.FC<TeamRotatingCylinderProps> = ({
       className={className || "default-team-rotating-cylinder"}
     >
       <RotatingCylinder
-        images={Array.from({ length: 5 }, () =>
-          teamLogoUrl?.replace("-Under-19s", "")?.replace("-Under-19", "")
-        )}
+        images={Array.from({ length: 5 }, () => teamLogoUrl)}
         width={250 * (scale || 1)}
         height={250 * (scale || 1)}
         rotationSpeed={3}

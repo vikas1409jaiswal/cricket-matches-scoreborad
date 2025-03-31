@@ -1,315 +1,425 @@
 import { useQuery } from "react-query";
-import { ApiData } from "../../models/Api";
 import {
   Batsman,
   Bowler,
   CricketMatch,
-  MatchSquad,
-  PointsTableRow,
-} from "../../models/espn-cricinfo-models/CricketMatchModels";
-import axios, { AxiosResponse } from "axios";
-import { config } from "../../configs";
+  Replacement,
+  TeamScoreBoard,
+} from "../../models/espn-cricinfo-models/CricketMatch";
+import { config, Language } from "../../configs";
 import teamLogos from "./../../data/StaticData/teamLogos.json";
+import { useFetchPlaying11 } from "./useFetchPlaying11";
+import { useFetchPointsTable } from "./useFetchPointsTable";
+import { fetchESPNCricInfoContent } from "./fetcherFunctions";
+import { ApiData } from "../../models/Api";
+import { AxiosResponse } from "axios";
+import { PlayerOfTheMatch } from "../../models/espn-cricinfo-models/CricketMatchBase";
 
-export const modifyTeamName = (teamName: string) => {
-  let modTeamName = teamName
-    ?.replace("U19s", "Under 19")
-    ?.replace("Under-19s", "Under 19");
-  switch (teamName) {
-    case "Royals":
-      modTeamName = "Barbados Royals Women";
-      break;
-    case "Warriors":
-      modTeamName = "Guyana Amazon Warriors Women";
-      break;
-    case "Riders":
-      modTeamName = "Trinbago Knight Riders Women";
-      break;
+const contentSelector = {
+  matchBriefInfo: ".ds-w-full .ds-text-compact-xxs",
+  matchDetailsInfo: "table.ds-table.ds-table-sm",
+  inningScoreBoard: ".ds-rounded-lg.ds-mt-2",
+};
+
+export const SetTeamLogoUrl = (teamName: string) => {
+  let modTeamName = teamName;
+
+  if (config.language === Language.Hindi) {
+    modTeamName =
+      teamLogos.find((x) => x.hindiTeamName === teamName)?.teamName || "";
   }
-  return modTeamName;
+
+  return `http://localhost:3012/images-team-logos/${modTeamName?.replaceAll(
+    " ",
+    "-"
+  )}.png`;
 };
 
-const fetchCricketMatch = (url: string): Promise<AxiosResponse<ApiData>> => {
-  return axios.get(`https://stats.espncricinfo.com${url}`);
+const useHtmlContent = (data: AxiosResponse<ApiData, any> | undefined) => {
+  const divElement = document.createElement("div");
+  divElement.innerHTML = data?.data.toString() as string;
+
+  const matchBriefInfoData = divElement.querySelector(
+    contentSelector.matchBriefInfo
+  );
+
+  const matchDetailsInfoData = divElement.querySelector(
+    contentSelector.matchDetailsInfo
+  );
+
+  const matchDetailsInfoRows = matchDetailsInfoData?.querySelectorAll("tr");
+
+  const inningScoreBoardsData = divElement.querySelectorAll(
+    contentSelector.inningScoreBoard
+  );
+
+  return {
+    divElement,
+    matchBriefInfoData,
+    matchDetailsInfoData,
+    matchDetailsInfoRows,
+    inningScoreBoardsData,
+  };
 };
 
-export const useFetchPlaying11 = (url: string, isEnabled: boolean) => {
-  const playing11Url = url.replace("full-scorecard", "match-playing-xi");
-  //const playing11Url = url.replace("full-scorecard", "match-squads");
+const useMatchDetailsHtmlContent = (
+  matchDetailsInfoRows: NodeListOf<HTMLTableRowElement> | undefined
+) => {
+  type MatchDetailElement<T> = {
+    value: T;
+    rowHeader: string[];
+  };
 
-  const { data: playing11Data } = useQuery(
-    [playing11Url],
-    () => fetchCricketMatch(playing11Url),
-    {
-      enabled: isEnabled,
-    }
-  );
+  type MatchDetailsData = {
+    tossDetail: MatchDetailElement<string>;
+    season: MatchDetailElement<string>;
+    series: MatchDetailElement<string>;
+    seriesResult: MatchDetailElement<string>;
+    matchNo: MatchDetailElement<string>;
+    matchDays: MatchDetailElement<string>;
+    tvUmpire: MatchDetailElement<string>;
+    matchReferee: MatchDetailElement<string>;
+    reserveUmpire: MatchDetailElement<string>;
+  };
 
-  const playing11DivElement = document.createElement("div");
+  type MatchDetailsDataExtended = {
+    playerOfTheMatch: MatchDetailElement<PlayerOfTheMatch>;
+    umpires: MatchDetailElement<string[]>;
+    formatDebut: MatchDetailElement<string[]>;
+    internationalDebut: MatchDetailElement<string[]>;
+    playerReplacement: MatchDetailElement<Replacement[]>;
+  };
 
-  playing11DivElement.innerHTML = playing11Data?.data.toString() as string;
-
-  const tableSelector = playing11DivElement.querySelector(
-    ".ds-w-full.ds-table.ds-table-sm.ds-table-bordered.ds-border-collapse.ds-border.ds-border-line.ds-table-auto.ds-bg-fill-content-prime"
-  );
-
-  const thSelector = tableSelector?.querySelectorAll("thead th");
-  const trSelector = tableSelector?.querySelectorAll("tbody > tr");
-  const team1Name = modifyTeamName(thSelector?.item(1)?.textContent || "");
-  const team2Name = modifyTeamName(thSelector?.item(2)?.textContent || "");
-
-  const matchSquad: MatchSquad = {
-    team1SquadInfo: {
-      teamName: team1Name,
-      teamLogoUrl: `http://localhost:3012/images-team-logos/${
-        config.language === "hindi"
-          ? teamLogos
-              .find((x) => x.hindiTeamName === team1Name)
-              ?.teamName?.replaceAll(" ", "-")
-          : team1Name?.replaceAll(" ", "-")
-      }.png`,
-      teamSquad: [],
+  const matchDetailsData: MatchDetailsData = {
+    tossDetail: {
+      value: "",
+      rowHeader: ["Toss", "टॉस"],
     },
-    team2SquadInfo: {
-      teamName: team2Name,
-      teamLogoUrl: `http://localhost:3012/images-team-logos/${
-        config.language === "hindi"
-          ? teamLogos
-              .find((x) => x.hindiTeamName === team2Name)
-              ?.teamName?.replaceAll(" ", "-")
-          : team2Name?.replaceAll(" ", "-")
-      }.png`,
-      teamSquad: [],
+    season: {
+      value: "",
+      rowHeader: ["Season", "सत्र"],
+    },
+    series: {
+      value: "",
+      rowHeader: ["Series", "सीरीज़"],
+    },
+    seriesResult: {
+      value: "",
+      rowHeader: ["Series result", "सीरीज़ परिणाम"],
+    },
+    matchNo: {
+      value: "",
+      rowHeader: ["Match number", "मैच नंबर"],
+    },
+    matchDays: {
+      value: "",
+      rowHeader: ["Match days", "मैच के दिन"],
+    },
+    tvUmpire: {
+      value: "",
+      rowHeader: ["TV Umpire", "टीवी अंपायर"],
+    },
+    matchReferee: {
+      value: "",
+      rowHeader: ["Match Referee", "मैच रेफ़री"],
+    },
+    reserveUmpire: {
+      value: "",
+      rowHeader: ["Reserve Umpire", "रिज़र्व अंपायर"],
     },
   };
 
-  trSelector?.forEach((tr) => {
-    matchSquad.team1SquadInfo.teamSquad.push({
-      player: {
-        name:
-          tr?.querySelectorAll("td a").item(0)?.textContent?.trim() ||
-          "unknown",
-        href: tr?.querySelectorAll("td a").item(0)?.getAttribute("href") || "",
+  const matchDetailsDataExtended: MatchDetailsDataExtended = {
+    playerOfTheMatch: {
+      value: {
+        playerName: "",
+        teamName: "",
+        href: "",
       },
-      role: tr?.querySelectorAll("td p").item(0)?.textContent || "",
+      rowHeader: ["Player Of The Match", "प्लेयर ऑफ़ द मैच"],
+    },
+    umpires: {
+      value: [],
+      rowHeader: ["Umpires", "अंपायर्स"],
+    },
+    formatDebut: {
+      value: [],
+      rowHeader: ["T20 debut"],
+    },
+    internationalDebut: {
+      value: [],
+      rowHeader: ["T20I debut", "ODI debut"],
+    },
+    playerReplacement: {
+      value: [],
+      rowHeader: ["Player Replacement", "प्लेयर रिप्लेसमेंट"],
+    },
+  };
+
+  for (let i = 1; i < (matchDetailsInfoRows?.length as number); i++) {
+    const tableRow = matchDetailsInfoRows?.item(i);
+    const rowHeader = tableRow?.querySelectorAll("td span")[0]
+      ?.innerHTML as string;
+    const rowValue = tableRow?.querySelectorAll("td span")[1]
+      ?.textContent as string;
+
+    Object.keys(matchDetailsData).forEach((key) => {
+      const fieldKey = key as keyof typeof matchDetailsData;
+      const field = matchDetailsData[fieldKey];
+
+      if (field?.rowHeader?.includes(rowHeader as string)) {
+        matchDetailsData[fieldKey] = {
+          ...field,
+          value: rowValue as string,
+        };
+      }
     });
 
-    matchSquad.team2SquadInfo.teamSquad.push({
-      player: {
-        name:
-          tr?.querySelectorAll("td a").item(1)?.textContent?.trim() ||
-          "unknown",
-        href: tr?.querySelectorAll("td a").item(1)?.getAttribute("href") || "",
-      },
-      role: tr?.querySelectorAll("td p").item(1)?.textContent || "",
-    });
-  });
+    if (
+      matchDetailsDataExtended.playerOfTheMatch.rowHeader.includes(rowHeader)
+    ) {
+      let teamName = tableRow?.querySelector("td img")?.getAttribute("alt");
+      teamName = teamLogos.find((x) => x.shortName === teamName)
+        ?.teamName as string;
 
-  return matchSquad;
+      matchDetailsDataExtended.playerOfTheMatch.value = {
+        playerName: rowValue,
+        href: tableRow?.querySelector("td a")?.getAttribute("href") || "",
+        teamName,
+      };
+    }
+
+    [
+      matchDetailsDataExtended.umpires,
+      matchDetailsDataExtended.internationalDebut,
+      matchDetailsDataExtended.formatDebut,
+    ].forEach((arr) => {
+      if (arr.rowHeader.includes(rowHeader)) {
+        const xRows = tableRow?.querySelectorAll("td span");
+        xRows?.forEach(
+          (x, i) => i > 0 && arr.value.push(x?.textContent as string)
+        );
+        arr.value = Array.from(new Set(arr.value));
+      }
+    });
+
+    if (
+      matchDetailsDataExtended.playerReplacement.rowHeader.some((pr) =>
+        rowHeader.includes(pr)
+      )
+    ) {
+      const playerHrefs = tableRow?.querySelectorAll("a");
+      matchDetailsDataExtended.playerReplacement.value.push({
+        teamName: rowHeader.split("-->")[0],
+        inPlayerHref: playerHrefs?.item(0)?.getAttribute("href") as string,
+        outPlayerHref: playerHrefs?.item(1)?.getAttribute("href") as string,
+      });
+    }
+  }
+
+  return {
+    ...matchDetailsData,
+    ...matchDetailsDataExtended,
+  };
 };
 
-export const useFetchPointsTable = (url: string, isEnabled: boolean) => {
-  const pointsTableUrl = url.replace(
-    "full-scorecard",
-    "points-table-standings"
-  );
+const setTeamScoreData = (
+  tablesTeamData: NodeListOf<Element>,
+  teamDetails: TeamScoreBoard
+) => {
+  tablesTeamData
+    ?.item(0)
+    ?.querySelectorAll("tbody tr")
+    .forEach((tr) => {
+      const scoreSelector = tr?.querySelectorAll(
+        "td"
+      ) as NodeListOf<HTMLTableCellElement>;
+      const pName = tr?.querySelector("td")?.textContent as string;
+      const pHref = tr?.querySelector("td a")?.getAttribute("href") as string;
+      !(pName.includes("Total") || pName === "कुल") &&
+        !(
+          pName.includes("Fall of wickets:") || pName?.includes("विकेट पतन:")
+        ) &&
+        !(pName.includes("Extras") || pName.includes("अतिरिक्त")) &&
+        !(
+          pName.includes("Did not bat:") || pName.includes("बल्लेबाज़ी नहीं की:")
+        ) &&
+        !pName.includes("Yet to bat:") &&
+        pName.length > 0 &&
+        teamDetails?.battingScorecard.push({
+          playerName: {
+            name: pName,
+            href: pHref,
+          },
+          outStatus: scoreSelector[1]?.textContent as string,
+          runsScored: parseInt(
+            tr?.querySelector("td strong")?.textContent as string
+          ),
+          ballsFaced: parseInt(scoreSelector[3]?.textContent as string),
+          minutes: parseInt(scoreSelector[4]?.textContent as string),
+          fours: parseInt(scoreSelector[5]?.textContent as string),
+          sixes: parseInt(scoreSelector[6]?.textContent as string),
+        } as Batsman);
 
-  const { data: pointsTable } = useQuery(
-    [pointsTableUrl],
-    () => fetchCricketMatch(pointsTableUrl),
-    {
-      enabled: isEnabled,
-    }
-  );
+      if ((pName.includes("Total") || pName === "कुल") && teamDetails) {
+        teamDetails["totalScore"] = `${scoreSelector?.item(2)?.textContent}::${
+          scoreSelector?.item(1)?.textContent
+        }`;
+      }
 
-  const ptDivElement = document.createElement("div");
+      if (
+        (pName.includes("Extra") || pName.includes("अतिरिक्त")) &&
+        teamDetails
+      ) {
+        teamDetails["extras"] = scoreSelector?.item(2)?.textContent || "";
+      }
 
-  ptDivElement.innerHTML = pointsTable?.data.toString() as string;
+      if (
+        (pName.includes("Fall of wickets:") || pName?.includes("विकेट पतन:")) &&
+        teamDetails
+      ) {
+        scoreSelector
+          ?.item(0)
+          ?.querySelectorAll("span")
+          .forEach((x, i) => {
+            i === 0 &&
+              teamDetails["fallOfWickets"].push(x?.textContent as string);
+            i > 0 &&
+              teamDetails["fallOfWickets"].push(
+                x?.textContent?.slice(2) as string
+              );
+          });
+      }
 
-  const tableSelector = ptDivElement.querySelectorAll(
-    ".ds-w-full.ds-table > tbody > tr.ds-text-tight-s"
-  );
-
-  const pointsTableArr: PointsTableRow[] = [];
-
-  tableSelector.forEach((tr) => {
-    const tdsSelector = tr?.querySelectorAll("td");
-    pointsTableArr.push({
-      rank: parseInt(tr?.querySelector("td > a span")?.textContent || "0"),
-      teamName: modifyTeamName(
-        tr?.querySelector("td > a div")?.textContent || ""
-      ),
-      matches: parseInt(tdsSelector?.item(1).textContent as string),
-      won: parseInt(tdsSelector?.item(2).textContent as string),
-      lost: parseInt(tdsSelector?.item(3).textContent as string),
-      tied: parseInt(tdsSelector?.item(4).textContent as string),
-      noResult: parseInt(tdsSelector?.item(5).textContent as string),
-      netRR: parseFloat(tdsSelector?.item(7).textContent as string),
-      points: parseInt(tdsSelector?.item(6).textContent as string),
+      if (
+        (pName.includes("Did not bat:") ||
+          pName.includes("बल्लेबाज़ी नहीं की:") ||
+          pName.includes("Yet to bat:")) &&
+        teamDetails
+      ) {
+        scoreSelector
+          ?.item(0)
+          ?.querySelectorAll("a")
+          .forEach((x) => {
+            const dnpPlayerName = x
+              ?.querySelector("span")
+              ?.textContent?.replace(",", "")
+              .trim() as string;
+            const href = x?.getAttribute("href") as string;
+            teamDetails["didNotBat"]
+              .map((x) => x.name)
+              ?.indexOf(dnpPlayerName) === -1 &&
+              teamDetails["didNotBat"].push({
+                name: dnpPlayerName,
+                href,
+              });
+          });
+      }
     });
-  });
 
-  return pointsTableArr;
+  tablesTeamData
+    ?.item(1)
+    ?.querySelectorAll("tbody tr:not(.ds-hidden)")
+    .forEach((tr) => {
+      const scoreSelector = tr?.querySelectorAll(
+        "td"
+      ) as NodeListOf<HTMLTableCellElement>;
+      const pName = tr?.querySelector("td")?.textContent as string;
+      const pHref = tr?.querySelector("td a")?.getAttribute("href") as string;
+      !pName.includes("Team:") &&
+        teamDetails?.bowlingScorecard.push({
+          playerName: {
+            name: pName,
+            href: pHref,
+          },
+          oversBowled: parseFloat(scoreSelector[1]?.textContent as string),
+          maidens: parseInt(scoreSelector[2]?.textContent as string),
+          runsConceded: parseInt(scoreSelector[3]?.textContent as string),
+          wickets: parseInt(
+            tr?.querySelector("td strong")?.textContent as string
+          ),
+          dots: parseInt(scoreSelector[6]?.textContent as string),
+          fours: parseInt(scoreSelector[7]?.textContent as string),
+          sixes: parseInt(scoreSelector[8]?.textContent as string),
+          wideBall: parseInt(scoreSelector[9]?.textContent as string),
+          noBall: parseInt(scoreSelector[10]?.textContent as string),
+        } as Bowler);
+    });
 };
 
 export const useFetchMatchByUrl = (url: string): CricketMatch => {
-  const { isLoading, data } = useQuery([url, "match-info"], () =>
-    fetchCricketMatch(url)
+  const { isLoading, data } = useQuery([url, "full-scoreboard"], () =>
+    fetchESPNCricInfoContent(`${url}/full-scorecard`)
   );
 
   const matchSquad = useFetchPlaying11(url, !isLoading);
 
   const pointsTable = useFetchPointsTable(url, !isLoading);
 
-  const divElement = document.createElement("div");
+  const {
+    divElement,
+    matchBriefInfoData,
+    matchDetailsInfoData,
+    matchDetailsInfoRows,
+    inningScoreBoardsData,
+  } = useHtmlContent(data);
 
-  divElement.innerHTML = data?.data.toString() as string;
-
-  const headerData = divElement.querySelector(
-    ".ds-w-full .ds-text-compact-xxs"
-  );
-  const tableData = divElement.querySelector("table.ds-table.ds-table-sm");
-  const tableRows = tableData?.querySelectorAll("tr");
-
-  const teamsData = divElement.querySelectorAll(".ds-rounded-lg.ds-mt-2");
-
-  const team1Data = teamsData[0];
-  const team2Data = teamsData[1];
-  const tablesTeam1Data = team1Data?.querySelectorAll("table.ds-w-full");
-  const tablesTeam2Data = team2Data?.querySelectorAll("table.ds-w-full");
-
-  const teamNames = headerData?.querySelectorAll(
-    ".ci-team-score > div:first-child"
-  );
-  const team1Name = modifyTeamName(
-    teamNames?.item(0)?.getAttribute("title") || ""
-  );
-  const team2Name = modifyTeamName(
-    teamNames?.item(1)?.getAttribute("title") || ""
-  );
-
-  let tossDetail = "";
-  let season = "";
-  let series = "";
-  let seriesResult = "";
-  let playerOfTheMatch = "";
-  let potmHref = "";
-  let potmTeamName = "";
-  let matchNo = "";
-  let matchDays = "";
-  let tvUmpire = "";
-  let matchReferee = "";
-  let reserveUmpire = "";
-  let umpires: string[] = [];
-  let formatDebut: string[] = [];
-  let internationalDebut: string[] = [];
-
-  for (let i = 1; i < (tableRows?.length as number); i++) {
-    const tableRow = tableRows?.item(i);
-    const rowHeader = tableRow?.querySelectorAll("td span")[0]?.innerHTML;
-    const rowValue = tableRow?.querySelectorAll("td span")[1]
-      ?.textContent as string;
-    if (rowHeader === "Toss" || rowHeader === "टॉस") {
-      tossDetail = rowValue;
-    }
-    if (rowHeader === "Season" || rowHeader === "सत्र") {
-      season = rowValue;
-    }
-    if (rowHeader === "Series" || rowHeader === "सीरीज़") {
-      series = rowValue;
-    }
-    if (rowHeader === "Series result" || rowHeader === "सीरीज़ परिणामx") {
-      seriesResult = rowValue?.replace("P1ay-Off", "Play-Off");
-    }
-    if (
-      rowHeader === "Player Of The Match" ||
-      rowHeader === "प्लेयर ऑफ़ द मैच"
-    ) {
-      playerOfTheMatch = rowValue;
-      potmHref = tableRow?.querySelector("td a")?.getAttribute("href") || "";
-      potmTeamName =
-        tableRow?.querySelector("td img")?.getAttribute("alt") || "";
-    }
-    if (rowHeader === "Match number" || rowHeader === "मैच नंबर") {
-      matchNo = rowValue;
-    }
-    if (rowHeader === "Match days" || rowHeader === "मैच के दिन") {
-      matchDays = rowValue;
-    }
-    if (rowHeader === "TV Umpire" || rowHeader === "टीवी अंपायर") {
-      tvUmpire = rowValue;
-    }
-    if (rowHeader === "Reserve Umpire" || rowHeader === "रिज़र्व अंपायर") {
-      reserveUmpire = rowValue;
-    }
-    if (rowHeader === "Match Referee" || rowHeader === "मैच रेफ़री") {
-      matchReferee = rowValue;
-    }
-    if (rowHeader === "Umpires" || rowHeader === "अंपायर्स") {
-      const umpiresRows = tableRow?.querySelectorAll("td span");
-      umpiresRows?.forEach(
-        (x, i) => i > 0 && umpires.push(x?.textContent as string)
-      );
-      umpires = Array.from(new Set(umpires));
-    }
-    if (rowHeader === "T20I debut" || rowHeader === "ODI debut") {
-      const iDebutRows = tableRow?.querySelectorAll("td span");
-      iDebutRows?.forEach(
-        (x, i) => i > 0 && internationalDebut.push(x?.textContent as string)
-      );
-      internationalDebut = Array.from(new Set(internationalDebut));
-    }
-    if (rowHeader === "T20 debut") {
-      const debutRows = tableRow?.querySelectorAll("td span");
-      debutRows?.forEach(
-        (x, i) => i > 0 && formatDebut.push(x?.textContent as string)
-      );
-      formatDebut = Array.from(new Set(formatDebut));
-    }
-  }
-
-  const cricketMatch: CricketMatch = {
-    matchUuid: "00000000-0000-0000-0000-000000000000",
+  const {
     season,
     series,
     seriesResult,
-    playerOfTheMatch: {
-      playerName: playerOfTheMatch,
-      href: potmHref,
-      teamName:
-        config.language === "hindi"
-          ? team1Name?.includes(potmTeamName)
-            ? team1Name
-            : team2Name
-          : team1Name?.includes(potmTeamName)
-          ? team1Name?.replaceAll(" ", "-")
-          : team2Name?.replaceAll(" ", "-"),
-    },
-    matchNo:
-      matchNo ||
+    playerOfTheMatch,
+    matchNo,
+    matchDays,
+    tossDetail,
+    tvUmpire,
+    reserveUmpire,
+    matchReferee,
+    umpires,
+    formatDebut,
+    internationalDebut,
+    playerReplacement,
+  } = useMatchDetailsHtmlContent(matchDetailsInfoRows);
+
+  const firstTeamISBData = inningScoreBoardsData[0];
+  const secondTeamISBData = inningScoreBoardsData[1];
+
+  const firstTeamISBTable =
+    firstTeamISBData?.querySelectorAll("table.ds-w-full");
+  const secondTeamISBTable =
+    secondTeamISBData?.querySelectorAll("table.ds-w-full");
+
+  const teamNames = matchBriefInfoData?.querySelectorAll(
+    ".ci-team-score > div:first-child"
+  );
+
+  const team1Name = teamNames?.item(0)?.getAttribute("title") as string;
+  const team2Name = teamNames?.item(1)?.getAttribute("title") as string;
+
+  const cricketMatch: CricketMatch = {
+    matchUuid: "9faaf4c6-9446-47b2-b6db-7f84ca6c9c31",
+    season: season.value,
+    series: series.value,
+    seriesResult: seriesResult.value,
+    playerOfTheMatch: playerOfTheMatch.value,
+    matchNumber:
+      matchNo.value ||
       (divElement?.querySelector("div.ds-p-0 div.ds-truncate")
         ?.textContent as string),
-    matchDays,
+    matchDays: matchDays.value,
     matchTitle: `${team1Name} vs ${team2Name}`,
-    venue: tableData?.querySelector("span")?.innerHTML as string,
-    matchDate: matchDays?.split(" - ")[0],
-    tossWinner: modifyTeamName(tossDetail.split(",")[0]),
-    tossDecision: tossDetail,
-    result: headerData?.querySelector("p > span")?.innerHTML as string,
+    venue: matchDetailsInfoData?.querySelector("span")?.innerHTML as string,
+    tossWinner: tossDetail.value.split(",")[0],
+    tossDecision: tossDetail.value,
+    result: matchBriefInfoData?.querySelector("p > span")?.innerHTML as string,
     matchSquad,
     pointsTable,
     team1: {
       teamName: team1Name,
       team: {
         name: team1Name,
-        uuid: "00000000-0000-0000-0000-000000000000",
-        logoUrl: `http://localhost:3012/images-team-logos/${
-          config.language === "hindi"
-            ? teamLogos
-                .find((x) => x.hindiTeamName === team1Name)
-                ?.teamName?.replaceAll(" ", "-")
-            : team1Name?.replaceAll(" ", "-")
-        }.png`,
+        uuid: "292de29f-cca2-4762-a477-dec18a698d08",
+        logoUrl: SetTeamLogoUrl(team1Name),
       },
       battingScorecard: [],
       bowlingScorecard: [],
@@ -322,14 +432,8 @@ export const useFetchMatchByUrl = (url: string): CricketMatch => {
       teamName: team2Name,
       team: {
         name: team2Name,
-        uuid: "00000000-0000-0000-0000-000000000000",
-        logoUrl: `http://localhost:3012/images-team-logos/${
-          config.language === "hindi"
-            ? teamLogos
-                .find((x) => x.hindiTeamName === team2Name)
-                ?.teamName?.replaceAll(" ", "-")
-            : team2Name?.replaceAll(" ", "-")
-        }.png`,
+        uuid: "6e2f86fb-1432-4954-a9eb-fb771b7158d6",
+        logoUrl: SetTeamLogoUrl(team2Name),
       },
       battingScorecard: [],
       bowlingScorecard: [],
@@ -338,146 +442,17 @@ export const useFetchMatchByUrl = (url: string): CricketMatch => {
       didNotBat: [],
       totalScore: "",
     },
-    tvUmpire,
-    matchReferee,
-    reserveUmpire,
-    umpires,
-    formatDebut,
-    internationalDebut,
+    tvUmpire: tvUmpire.value,
+    matchReferee: matchReferee.value,
+    reserveUmpire: reserveUmpire.value,
+    umpires: umpires.value,
+    formatDebut: formatDebut.value,
+    internationalDebut: internationalDebut.value,
+    playerReplacement: playerReplacement.value,
   };
 
-  const setTeamScoreData = (
-    tablesTeamData: NodeListOf<Element>,
-    teamName: string
-  ) => {
-    const teamDetails = [cricketMatch.team1, cricketMatch.team2].find(
-      (x) => x.teamName === teamName
-    );
-
-    tablesTeamData
-      ?.item(0)
-      ?.querySelectorAll("tbody tr")
-      .forEach((tr) => {
-        const scoreSelector = tr?.querySelectorAll(
-          "td"
-        ) as NodeListOf<HTMLTableCellElement>;
-        const pName = tr?.querySelector("td")?.textContent as string;
-        const pHref = tr?.querySelector("td a")?.getAttribute("href") as string;
-        !(pName.includes("Total") || pName === "कुल") &&
-          !(
-            pName.includes("Fall of wickets:") || pName?.includes("विकेट पतन:")
-          ) &&
-          !(pName.includes("Extras") || pName.includes("अतिरिक्त")) &&
-          !(
-            pName.includes("Did not bat:") ||
-            pName.includes("बल्लेबाज़ी नहीं की:")
-          ) &&
-          !pName.includes("Yet to bat:") &&
-          pName.length > 0 &&
-          teamDetails?.battingScorecard.push({
-            playerName: {
-              name: pName,
-              href: pHref,
-            },
-            outStatus: scoreSelector[1]?.textContent as string,
-            runsScored: parseInt(
-              tr?.querySelector("td strong")?.textContent as string
-            ),
-            ballsFaced: parseInt(scoreSelector[3]?.textContent as string),
-            minutes: parseInt(scoreSelector[4]?.textContent as string),
-            fours: parseInt(scoreSelector[5]?.textContent as string),
-            sixes: parseInt(scoreSelector[6]?.textContent as string),
-          } as Batsman);
-
-        if ((pName.includes("Total") || pName === "कुल") && teamDetails) {
-          teamDetails["totalScore"] = `${
-            scoreSelector?.item(2)?.textContent
-          }::${scoreSelector?.item(1)?.textContent}`;
-        }
-
-        if (
-          (pName.includes("Extra") || pName.includes("अतिरिक्त")) &&
-          teamDetails
-        ) {
-          teamDetails["extras"] = scoreSelector?.item(2)?.textContent || "";
-        }
-
-        if (
-          (pName.includes("Fall of wickets:") ||
-            pName?.includes("विकेट पतन:")) &&
-          teamDetails
-        ) {
-          scoreSelector
-            ?.item(0)
-            ?.querySelectorAll("span")
-            .forEach((x, i) => {
-              i === 0 &&
-                teamDetails["fallOfWickets"].push(x?.textContent as string);
-              i > 0 &&
-                teamDetails["fallOfWickets"].push(
-                  x?.textContent?.slice(2) as string
-                );
-            });
-        }
-
-        if (
-          (pName.includes("Did not bat:") ||
-            pName.includes("बल्लेबाज़ी नहीं की:") ||
-            pName.includes("Yet to bat:")) &&
-          teamDetails
-        ) {
-          scoreSelector
-            ?.item(0)
-            ?.querySelectorAll("a")
-            .forEach((x) => {
-              const dnpPlayerName = x
-                ?.querySelector("span")
-                ?.textContent?.replace(",", "")
-                .trim() as string;
-              const href = x?.getAttribute("href") as string;
-              teamDetails["didNotBat"]
-                .map((x) => x.name)
-                ?.indexOf(dnpPlayerName) === -1 &&
-                teamDetails["didNotBat"].push({
-                  name: dnpPlayerName,
-                  href,
-                });
-            });
-        }
-      });
-
-    tablesTeamData
-      ?.item(1)
-      ?.querySelectorAll("tbody tr:not(.ds-hidden)")
-      .forEach((tr) => {
-        const scoreSelector = tr?.querySelectorAll(
-          "td"
-        ) as NodeListOf<HTMLTableCellElement>;
-        const pName = tr?.querySelector("td")?.textContent as string;
-        const pHref = tr?.querySelector("td a")?.getAttribute("href") as string;
-        !pName.includes("Team:") &&
-          teamDetails?.bowlingScorecard.push({
-            playerName: {
-              name: pName,
-              href: pHref,
-            },
-            oversBowled: parseFloat(scoreSelector[1]?.textContent as string),
-            maidens: parseInt(scoreSelector[2]?.textContent as string),
-            runsConceded: parseInt(scoreSelector[3]?.textContent as string),
-            wickets: parseInt(
-              tr?.querySelector("td strong")?.textContent as string
-            ),
-            dots: parseInt(scoreSelector[6]?.textContent as string),
-            fours: parseInt(scoreSelector[7]?.textContent as string),
-            sixes: parseInt(scoreSelector[8]?.textContent as string),
-            wideBall: parseInt(scoreSelector[9]?.textContent as string),
-            noBall: parseInt(scoreSelector[10]?.textContent as string),
-          } as Bowler);
-      });
-  };
-
-  setTeamScoreData(tablesTeam1Data, team1Name);
-  setTeamScoreData(tablesTeam2Data, team2Name);
+  setTeamScoreData(firstTeamISBTable, cricketMatch.team1);
+  setTeamScoreData(secondTeamISBTable, cricketMatch.team2);
 
   return cricketMatch;
 };

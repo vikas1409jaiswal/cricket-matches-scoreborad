@@ -26,6 +26,7 @@ const server = http.createServer((req, res) => {
     "international-women": "international-women",
     "international-women-test": "international-women-test",
     bbl: "bbl",
+    wbbl: "wbbl",
     "super-smash": "super-smash",
     sa20: "sa20",
     bpl: "bpl",
@@ -36,9 +37,10 @@ const server = http.createServer((req, res) => {
     lpl: "lpl",
     mlc: "mlc",
     cpl: "cpl",
+    gsl: "gsl",
   };
 
-  const selectedSubPath = subPathList.international; // Select path here based on logic
+  const selectedSubPath = subPathList["ipl"]; // Select path here based on logic
 
   // Serve team logos
   if (req.url.includes("/images-team-logos/")) {

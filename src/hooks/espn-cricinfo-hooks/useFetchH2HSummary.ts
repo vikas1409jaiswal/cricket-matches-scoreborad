@@ -1,89 +1,18 @@
 import { useQuery } from "react-query";
-import { ApiData } from "../../models/Api";
-import axios, { AxiosResponse } from "axios";
 import {
   MatchesResultSummary,
   PlayerH2HBattingInfo,
   PlayerH2HBowlingInfo,
   PlayerH2HHIScoreInfo,
-} from "../../models/espn-cricinfo-models/H2HMatches";
+} from "../../models/espn-cricinfo-models/H2HMatchesRecord";
 import teamLogos from "./../../data/StaticData/teamLogos.json";
 import { Format } from "../../models/enums/CricketFormat";
-
-const fetchHeadToHeadSummary = (
-  format: string,
-  teamUrlStr: string
-): Promise<AxiosResponse<ApiData>> => {
-  console.log(teamUrlStr);
-  return axios.get(
-    `https://www.espncricinfo.com/records/headtohead/team-results-summary/${teamUrlStr}/${format}`
-  );
-};
-
-const fetchMostRuns = (
-  format: string,
-  teamUrlStr: string
-): Promise<AxiosResponse<ApiData>> => {
-  return axios.get(
-    `https://www.espncricinfo.com/records/headtohead/batting-most-runs-career/${teamUrlStr}/${format}`
-  );
-};
-
-const fetchMostWickets = (
-  format: string,
-  teamUrlStr: string
-): Promise<AxiosResponse<ApiData>> => {
-  return axios.get(
-    `https://www.espncricinfo.com/records/headtohead/bowling-most-wickets-career/${teamUrlStr}/${format}`
-  );
-};
-
-const fetchHIScores = (
-  format: string,
-  teamUrlStr: string
-): Promise<AxiosResponse<ApiData>> => {
-  return axios.get(
-    `https://www.espncricinfo.com/records/headtohead/batting-most-runs-innings/${teamUrlStr}/${format}`
-  );
-};
-
-const teamIDMap = new Map([
-  ["Netherlands", 15],
-  ["Scotland", 30],
-  ["Bangladesh", 25],
-  ["Afghanistan", 40],
-  ["West Indies", 4],
-  ["Ireland", 29],
-  ["India", 6],
-  ["Australia", 2],
-  ["England", 1],
-  ["South Africa", 3],
-  ["Pakistan", 7],
-  ["Sri Lanka", 8],
-  ["United States of America", 11],
-  ["United Arab Emirates", 27],
-  ["New Zealand", 5],
-  ["Oman", 37],
-  ["Nepal", 32],
-  ["Canada", 17],
-  ["Hong Kong", 19],
-  ["Zimbabwe", 9],
-  ["Namibia", 28],
-  ["Kenya", 26],
-  ["Rwanda", 191],
-  ["Uganda", 34],
-  ["Nigeria", 173],
-  ["India Women", 1863],
-  ["England Women", 1026],
-  ["Australia Women", 289],
-  ["Papua New Guinea", 20],
-  ["Sri Lanka Women", 3672],
-  ["West Indies Women", 3867],
-]);
+import { teamIDMap } from "../../data/StaticData/constants";
+import { fetchTopPlayersInH2H, H2HStatsType } from "./fetcherFunctions";
 
 const useFetchMostRuns = (formatStr: string, teamUrlStr: string) => {
   const { data } = useQuery([formatStr, teamUrlStr, "most-runs"], () =>
-    fetchMostRuns(formatStr, teamUrlStr)
+    fetchTopPlayersInH2H(formatStr, teamUrlStr, H2HStatsType.MostRuns)
   );
 
   const divElement = document.createElement("div");
@@ -120,7 +49,7 @@ const useFetchMostRuns = (formatStr: string, teamUrlStr: string) => {
 
 const useFetchMostWickets = (formatStr: string, teamUrlStr: string) => {
   const { data } = useQuery([formatStr, teamUrlStr, "most-wickets"], () =>
-    fetchMostWickets(formatStr, teamUrlStr)
+    fetchTopPlayersInH2H(formatStr, teamUrlStr, H2HStatsType.MostWickets)
   );
 
   const divElement = document.createElement("div");
@@ -157,7 +86,7 @@ const useFetchMostWickets = (formatStr: string, teamUrlStr: string) => {
 
 const useFetchHIScores = (formatStr: string, teamUrlStr: string) => {
   const { data } = useQuery([formatStr, teamUrlStr, "hi-scores"], () =>
-    fetchHIScores(formatStr, teamUrlStr)
+    fetchTopPlayersInH2H(formatStr, teamUrlStr, H2HStatsType.MostRunsInInning)
   );
 
   const divElement = document.createElement("div");
@@ -195,9 +124,9 @@ export const useFetchH2HSummary = (
   if (format === Format.TEST_CRICKET) {
     formatStr = "test-matches-1"; //"women-s-test-matches-8";
   } else if (format === Format.ODI) {
-    formatStr = "one-day-internationals-2"; //"women-s-one-day-internationals-9";
+    formatStr = "one-day-internationals-2"; //"women-s-one-day-internationals-9"; //
   } else if (format === Format.T20_INTERNATIONAL) {
-    formatStr = "twenty20-internationals-3";
+    formatStr = "twenty20-internationals-3"; //"women-s-twenty20-internationals-10"; //
   }
 
   const team1IdMap = teamIDMap.get(team1Name);
@@ -206,7 +135,7 @@ export const useFetchH2HSummary = (
   const teamUrlStr = `${team1Name?.toLowerCase()}-${team2Name?.toLowerCase()}-${team1IdMap}vs${team2IdMap}`;
 
   const h2hData = useQuery([format, "h2h-matches"], () =>
-    fetchHeadToHeadSummary(formatStr, teamUrlStr)
+    fetchTopPlayersInH2H(formatStr, teamUrlStr, H2HStatsType.TeamResultSummary)
   );
 
   const mRArr = useFetchMostRuns(formatStr, teamUrlStr);

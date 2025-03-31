@@ -11,7 +11,7 @@
   {
     "teamName": "India Women",
     "hindiTeamName": "भारत",
-    "shortName": "INDW",
+    "shortName": "IND-W",
     "primaryColor": "orange",
     "secondaryColor": "lightblue",
     "teamBGColor": "cyan",
@@ -38,7 +38,7 @@
   {
     "teamName": "Australia Women",
     "hindiTeamName": "ऑस्ट्रेलिया",
-    "shortName": "AUS",
+    "shortName": "AUS-W",
     "primaryColor": "palegreen",
     "secondaryColor": "yellow",
     "teamBGColor": "yellow",
@@ -48,7 +48,7 @@
     "teamName": "South Africa",
     "hindiTeamName": "साउथ अफ़्रीका",
     "shortName": "SA",
-    "primaryColor": "darkred",
+    "primaryColor": "yellow",
     "secondaryColor": "palegreen",
     "teamBGColor": "palegreen",
     "teamFontColor": "black"
@@ -65,7 +65,7 @@
   {
     "teamName": "South Africa Women",
     "hindiTeamName": "",
-    "shortName": "",
+    "shortName": "SA-W",
     "primaryColor": "yellow",
     "secondaryColor": "palegreen",
     "teamBGColor": "red",
@@ -83,7 +83,7 @@
   {
     "teamName": "England Women",
     "hindiTeamName": "इंग्लैंड",
-    "shortName": "ENGW",
+    "shortName": "ENG-W",
     "primaryColor": "pink",
     "secondaryColor": "cyan",
     "teamBGColor": "darkblue",
@@ -101,7 +101,7 @@
   {
     "teamName": "Sri Lanka Women",
     "hindiTeamName": "श्रीलंका",
-    "shortName": "SL",
+    "shortName": "SL-W",
     "primaryColor": "cyan",
     "secondaryColor": "violet",
     "teamBGColor": "purple",
@@ -119,7 +119,7 @@
   {
     "teamName": "West Indies Women",
     "hindiTeamName": "",
-    "shortName": "",
+    "shortName": "WI-W",
     "primaryColor": "yellow",
     "secondaryColor": "salmon",
     "teamBGColor": "red",
@@ -138,6 +138,15 @@
     "teamName": "New Zealand",
     "hindiTeamName": "न्यूज़ीलैंड",
     "shortName": "NZ",
+    "primaryColor": "lightblue",
+    "secondaryColor": "silver",
+    "teamBGColor": "black",
+    "teamFontColor": "white"
+  },
+  {
+    "teamName": "New Zealand Women",
+    "hindiTeamName": "न्यूज़ीलैंड",
+    "shortName": "NZ-W",
     "primaryColor": "lightblue",
     "secondaryColor": "silver",
     "teamBGColor": "black",
@@ -173,11 +182,11 @@
   {
     "teamName": "Pakistan Women",
     "hindiTeamName": "",
-    "shortName": "PAK",
-    "primaryColor": "greenyellow",
-    "secondaryColor": "red",
-    "teamBGColor": "red",
-    "teamFontColor": "red"
+    "shortName": "PAK-W",
+    "primaryColor": "goldenrod",
+    "secondaryColor": "yellowgreen",
+    "teamBGColor": "greenyellow",
+    "teamFontColor": "darkred"
   },
   {
     "teamName": "Pakistan A",
@@ -198,6 +207,15 @@
     "teamFontColor": "red"
   },
   {
+    "teamName": "Ireland Women",
+    "hindiTeamName": "",
+    "shortName": "",
+    "primaryColor": "silver",
+    "secondaryColor": "palegreen",
+    "teamBGColor": "red",
+    "teamFontColor": "red"
+  },
+  {
     "teamName": "Ireland Under 19",
     "hindiTeamName": "",
     "shortName": "",
@@ -210,7 +228,7 @@
     "teamName": "Bangladesh",
     "hindiTeamName": "बांग्लादेश",
     "shortName": "BAN",
-    "primaryColor": "red",
+    "primaryColor": "orange",
     "secondaryColor": "yellowgreen",
     "teamBGColor": "darkgreen",
     "teamFontColor": "yellow"
@@ -218,9 +236,18 @@
   {
     "teamName": "Bangladesh Women",
     "hindiTeamName": "बांग्लादेश",
-    "shortName": "BAN",
-    "primaryColor": "red",
+    "shortName": "BAN-W",
+    "primaryColor": "orange",
     "secondaryColor": "yellowgreen",
+    "teamBGColor": "darkgreen",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Scotland Women",
+    "hindiTeamName": "बांग्लादेश",
+    "shortName": "SCO-W",
+    "primaryColor": "purple",
+    "secondaryColor": "cyan",
     "teamBGColor": "darkgreen",
     "teamFontColor": "yellow"
   },
@@ -711,10 +738,28 @@
     "teamFontColor": "darkblue"
   },
   {
+    "teamName": "Sydney Sixers Women",
+    "hindiTeamName": "",
+    "shortName": "SS-W",
+    "primaryColor": "cyan",
+    "secondaryColor": "pink",
+    "teamBGColor": "pink",
+    "teamFontColor": "darkblue"
+  },
+  {
     "teamName": "Melbourne Stars",
     "hindiTeamName": "",
-    "shortName": "MSS",
-    "primaryColor": "purple",
+    "shortName": "MS",
+    "primaryColor": "yellowgreen",
+    "secondaryColor": "palegreen",
+    "teamBGColor": "darkgreen",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Melbourne Stars Women",
+    "hindiTeamName": "",
+    "shortName": "MS-W",
+    "primaryColor": "grey",
     "secondaryColor": "palegreen",
     "teamBGColor": "darkgreen",
     "teamFontColor": "yellow"
@@ -723,8 +768,17 @@
     "teamName": "Brisbane Heat",
     "hindiTeamName": "",
     "shortName": "BH",
-    "primaryColor": "darkblue",
+    "primaryColor": "cyan",
     "secondaryColor": "lightblue",
+    "teamBGColor": "darkblue",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Brisbane Heat Women",
+    "hindiTeamName": "",
+    "shortName": "BH-W",
+    "primaryColor": "yellow",
+    "secondaryColor": "cyan",
     "teamBGColor": "darkblue",
     "teamFontColor": "yellow"
   },
@@ -738,10 +792,28 @@
     "teamFontColor": "yellow"
   },
   {
+    "teamName": "Melbourne Renegades Women",
+    "hindiTeamName": "",
+    "shortName": "MR-W",
+    "primaryColor": "gold",
+    "secondaryColor": "lightcoral",
+    "teamBGColor": "brown",
+    "teamFontColor": "yellow"
+  },
+  {
     "teamName": "Perth Scorchers",
     "hindiTeamName": "",
     "shortName": "PS",
-    "primaryColor": "brown",
+    "primaryColor": "grey",
+    "secondaryColor": "orange",
+    "teamBGColor": "orange",
+    "teamFontColor": "blue"
+  },
+  {
+    "teamName": "Perth Scorchers Women",
+    "hindiTeamName": "",
+    "shortName": "PS-W",
+    "primaryColor": "lightblue",
     "secondaryColor": "orange",
     "teamBGColor": "orange",
     "teamFontColor": "blue"
@@ -750,7 +822,16 @@
     "teamName": "Hobart Hurricanes",
     "hindiTeamName": "",
     "shortName": "HH",
-    "primaryColor": "blue",
+    "primaryColor": "lightblue",
+    "secondaryColor": "violet",
+    "teamBGColor": "purple",
+    "teamFontColor": "yellow"
+  },
+  {
+    "teamName": "Hobart Hurricanes Women",
+    "hindiTeamName": "",
+    "shortName": "HH-W",
+    "primaryColor": "grey",
     "secondaryColor": "violet",
     "teamBGColor": "purple",
     "teamFontColor": "yellow"
@@ -759,7 +840,16 @@
     "teamName": "Adelaide Strikers",
     "hindiTeamName": "",
     "shortName": "AS",
-    "primaryColor": "blue",
+    "primaryColor": "gold",
+    "secondaryColor": "lightblue",
+    "teamBGColor": "cyan",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Adelaide Strikers Women",
+    "hindiTeamName": "",
+    "shortName": "AS-W",
+    "primaryColor": "grey",
     "secondaryColor": "lightblue",
     "teamBGColor": "cyan",
     "teamFontColor": "black"
@@ -768,8 +858,17 @@
     "teamName": "Sydney Thunder",
     "hindiTeamName": "",
     "shortName": "ST",
-    "primaryColor": "blue",
+    "primaryColor": "coral",
     "secondaryColor": "lightblue",
+    "teamBGColor": "palegreen",
+    "teamFontColor": "black"
+  },
+  {
+    "teamName": "Sydney Thunder Women",
+    "hindiTeamName": "",
+    "shortName": "ST-W",
+    "primaryColor": "lightblue",
+    "secondaryColor": "palegreen",
     "teamBGColor": "palegreen",
     "teamFontColor": "black"
   },

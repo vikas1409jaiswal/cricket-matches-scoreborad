@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-pdf/renderer": "^4.0.0",
     "@react-three/drei": "^9.88.17",
     "@react-three/fiber": "^8.15.11",
     "@react-three/postprocessing": "^2.15.11",
@@ -20,6 +21,7 @@
     "framer-motion": "^10.16.4",
     "framer-motion-3d": "^10.18.0",
     "gsap": "^3.12.3",
+    "html-to-image": "^1.11.11",
     "i18next": "^23.7.6",
     "image-size": "^1.0.2",
     "jquery": "^3.7.1",
@@ -29,6 +31,7 @@
     "react-dom": "^18.2.0",
     "react-h5-audio-player": "^3.9.0",
     "react-i18next": "^13.5.0",
+    "react-icons": "^5.5.0",
     "react-intersection-observer": "^9.5.2",
     "react-player": "^2.13.0",
     "react-query": "^3.39.3",

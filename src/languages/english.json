@@ -4,6 +4,7 @@
         "Australia": "Australia"
     },
     "cricket_terms": {
+        "vs": "Vs",
         "balls": "Balls",
         "catches": "Catches",
         "conceded": "Conceded",
@@ -13,12 +14,13 @@
         "extras": "Extras",
         "head_to_head": "Head to Head",
         "match": "Match",
+        "match_number": "Match Number",
         "most_runs": "Most Runs",
         "most_wickets": "Most Wickets",
         "no_result": "No Result",
         "not_out": "not out",
         "overs": "Overs",
-        "playing_11": "Playing 11",
+        "playing_11": "Playing Squad",
         "player_of_the_match": "Player Of The Match",
         "points_table": {
             "rank": "Rank",

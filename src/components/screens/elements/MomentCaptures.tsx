@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { ImageSlideShow } from "./../../common/ImageSlideShow";
 import matchPhotos from "./../../../data/StaticData/matchPhotos.json";
 import { speakText } from "./../../common/SpeakText";
-import { config } from "../../../configs";
+import { config, Language } from "../../../configs";
 
 interface MomentCapturesProps {}
 
@@ -13,7 +13,7 @@ export const MomentCaptures: React.FC<MomentCapturesProps> = ({}) => {
     )}`;
 
   useEffect(() => {
-    if (config.language === "hindi") {
+    if (config.language === Language.Hindi) {
       speakText("मैच के कुछ महत्वपूर्ण दृश्य");
       speakText(
         "अगर आपको हमारी वीडियो पसंद आती है तो कृपया ऐसे और भी शानदार वीडियो के लिए हमारे चैनल को सब्सक्राइब करें। इस वीडियो को देखने के लिए धन्यवाद."

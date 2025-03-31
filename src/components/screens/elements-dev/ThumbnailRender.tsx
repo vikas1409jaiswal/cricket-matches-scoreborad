@@ -1,18 +1,23 @@
-import React, { useEffect } from "react";
-import { TeamSquadInfo } from "../../../models/espn-cricinfo-models/CricketMatchModels";
+import React, { useContext } from "react";
+import {
+  CricketMatch,
+  TeamSquadInfo,
+} from "../../../models/espn-cricinfo-models/CricketMatch";
 import { config } from "../../../configs";
+import { CricketMatchContext } from "../../CricketMatchDetails";
 
 interface ThumbnailRenderProps {
-  matchTitle: string;
   team1SquadInfo: TeamSquadInfo;
   team2SquadInfo: TeamSquadInfo;
 }
 
 export const ThumbnailRender: React.FC<ThumbnailRenderProps> = ({
-  matchTitle,
   team1SquadInfo,
   team2SquadInfo,
 }) => {
+  const { cricketMatch } = useContext(CricketMatchContext);
+  const { matchTitle } = cricketMatch as CricketMatch;
+
   const canvas = document.querySelector("canvas") as HTMLCanvasElement;
   const c = canvas?.getContext("2d") as CanvasRenderingContext2D;
 

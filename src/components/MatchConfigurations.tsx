@@ -1,5 +1,8 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { Format } from "../models/enums/CricketFormat";
+import { matchConfigStaticData } from "../data/StaticData/constants";
+import { config, Language } from "../configs";
+import { useTranslation } from "react-i18next";
 
 import "./MatchConfigurations.scss";
 
@@ -8,37 +11,16 @@ enum SeriesType {
   TOURNAMENT = "tournament",
 }
 
-const domesticTournaments: string[] = [
-  "Caribbean premier league 2024",
-  "Big bash league 2024/25",
-  "Indian premier league 2025",
-  "Pakistan super league 2025",
-  "SA20 league 2025",
-  "Lanka premier league 2025",
-];
-
-const internationalODITournaments: string[] = [
-  "ICC Men's Cricket World Cup League 2 2023-2027",
-];
-
-const internationalT20Tournaments: string[] = ["Canada T20 Tri-Series"];
-
-const venueCountries = [
-  "Australia",
-  "Bangladesh",
-  "Canada",
-  "England",
-  "India",
-  "Ireland",
-  "Namibia",
-  "New Zealand",
-  "Pakistan",
-  "South Africa",
-  "Sri Lanka",
-  "UAE",
-  "USA",
-  "West Indies",
-];
+enum MatchType {
+  GROUP_STAGE = "Group Stage",
+  ELIMINATOR = "Eliminator",
+  QUALIFIER_1 = "Qualifier 1",
+  QUALIFIER_2 = "Qualifier 2",
+  QUARTER_FINAL = "Quarter Final",
+  SEMI_FINAL_1 = "Semi-final 1",
+  SEMI_FINAL_2 = "Semi-final 2",
+  FINAL = "Final",
+}
 
 export interface MatchConfigs {
   matchUrl: string;
@@ -59,11 +41,24 @@ interface MatchConfigurationsProps {
 export const MatchConfigurations: React.FC<MatchConfigurationsProps> = ({
   setMatchConfigs,
 }) => {
-  const [matchUrl, setMatchUrl] = useState<string>();
-  const [format, setFormat] = useState<Format>(Format.ODI);
-  const [seriesType, setSeriesType] = useState<SeriesType>(
-    SeriesType.BILATERAL
+  const { t } = useTranslation();
+  const {
+    domesticTournaments,
+    internationalODITournaments,
+    internationalT20Tournaments,
+    venueCountries,
+  } = matchConfigStaticData;
+
+  const [matchUrl, setMatchUrl] = useState<string>(
+    `${
+      config.language === Language.Hindi ? "/hindi" : ""
+    }/series/ipl-2025-1449924/rajasthan-royals-vs-chennai-super-kings-11th-match-1473448`
   );
+  const [format, setFormat] = useState<Format>(Format.T20_DOMESTIC);
+  const [seriesType, setSeriesType] = useState<SeriesType>(
+    SeriesType.TOURNAMENT
+  );
+  const [matchType, setMatchType] = useState<MatchType>(MatchType.GROUP_STAGE);
   const [numberOfMatches, setNumberOfMatches] = useState<number>(3);
   const [domesticTournament, setDomesticTournament] = useState<string>(
     domesticTournaments[0]
@@ -73,7 +68,7 @@ export const MatchConfigurations: React.FC<MatchConfigurationsProps> = ({
   const [internationalT20Tournament, setInternationalT20Tournament] =
     useState<string>(internationalT20Tournaments[0]);
   const [venueCountry, setVenueCountry] = useState<string>(venueCountries[0]);
-  const [currMatchNumber, setCurrMatchNumber] = useState<string>("1");
+  const [currMatchNumber, setCurrMatchNumber] = useState<string>("11");
 
   const handleSubmit = () => {
     const formatBriefs = new Map<Format, string>([
@@ -86,22 +81,35 @@ export const MatchConfigurations: React.FC<MatchConfigurationsProps> = ({
     let currMatchNumberSuffix = "th";
     switch (unitPlace) {
       case 1:
-        currMatchNumberSuffix = "st";
+        if (parseInt(currMatchNumber) !== 11) {
+          currMatchNumberSuffix = "st";
+        }
         break;
       case 2:
-        currMatchNumberSuffix = "nd";
+        if (parseInt(currMatchNumber) !== 12) {
+          currMatchNumberSuffix = "nd";
+        }
         break;
       case 3:
-        currMatchNumberSuffix = "rd";
+        if (parseInt(currMatchNumber) !== 13) {
+          currMatchNumberSuffix = "rd";
+        }
         break;
     }
     const matchBrief = `${currMatchNumber}${currMatchNumberSuffix} ${formatBriefs.get(
       format
-    )} Match`;
+    )} ${t("cricket_terms.match")}`;
     const matchSpeech =
       seriesType === SeriesType.BILATERAL
         ? `${matchBrief} of ${numberOfMatches} match series`
-        : "";
+        : `${
+            matchType === MatchType.GROUP_STAGE
+              ? `${matchBrief?.replace("T20", "T twenty")}`
+              : matchType
+          }, ${(format === Format.T20_DOMESTIC
+            ? domesticTournament
+            : internationalODITournament
+          )?.replace("T20", "T twenty")}`;
     const pSelector = document.getElementById("json-data");
     if (pSelector) {
       const json: MatchConfigs = {
@@ -111,7 +119,8 @@ export const MatchConfigurations: React.FC<MatchConfigurationsProps> = ({
         numberOfMatches,
         currMatchNumber: parseInt(currMatchNumber),
         domesticTournament,
-        matchBrief,
+        matchBrief:
+          matchType === MatchType.GROUP_STAGE ? matchBrief : matchType,
         matchSpeech,
         venueCountry: venueCountry === "West Indies" ? "" : `(${venueCountry})`,
       };
@@ -155,6 +164,34 @@ export const MatchConfigurations: React.FC<MatchConfigurationsProps> = ({
           <option value={SeriesType.TOURNAMENT}>Tournament</option>
         </select>
       </div>
+      {seriesType === SeriesType.TOURNAMENT && (
+        <div>
+          <label>Match Type</label>
+          <select
+            onChange={(e) => {
+              setMatchType(e.target.value as MatchType);
+            }}
+            value={matchType}
+          >
+            <option value={MatchType.GROUP_STAGE}>Group Stage</option>
+            {format === Format.T20_DOMESTIC && (
+              <>
+                <option value={MatchType.ELIMINATOR}>Eliminator</option>
+                <option value={MatchType.QUALIFIER_1}>Qualifier 1</option>
+                <option value={MatchType.QUALIFIER_2}>Qualifier 2</option>
+              </>
+            )}
+            {format === Format.T20_INTERNATIONAL && (
+              <>
+                <option value={MatchType.SEMI_FINAL_1}>Semi-final 1</option>
+                <option value={MatchType.SEMI_FINAL_2}>Semi-final 2</option>
+                <option value={MatchType.QUARTER_FINAL}>Quarter Final</option>
+              </>
+            )}
+            <option value={MatchType.FINAL}>Final</option>
+          </select>
+        </div>
+      )}
       {seriesType === SeriesType.BILATERAL && (
         <div>
           <label>Number of Matches</label>

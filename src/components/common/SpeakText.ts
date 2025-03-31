@@ -1,4 +1,4 @@
-import { config } from "../../configs";
+import { config, Language } from "../../configs";
 
 export enum SpeechLanguage {
   EnglishIndian = "en-IN",
@@ -16,7 +16,7 @@ export const speakText = (
     console.log(synthesis);
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang =
-      config.language === "hindi"
+      config.language === Language.Hindi
         ? SpeechLanguage.HindiIndian
         : SpeechLanguage.EnglishIndian;
     utterance.volume = config.muteSpeech ? 0 : 1;

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useFetchMatchesBySeason } from "./../hooks/espn-cricinfo-hooks/useFetchMatchesBySeason";
-import { CricketMatch } from "./CricketMatch";
+import { CricketMatchDetails } from "./CricketMatchDetails";
 import $ from "jquery";
-import { TestCricketMatch } from "./TestCricketMatch";
+import { TestCricketMatchDetails } from "./TestCricketMatchDetails";
 import { MatchConfigs, MatchConfigurations } from "./MatchConfigurations";
 import { Format } from "../models/enums/CricketFormat";
 
@@ -13,13 +12,6 @@ interface CricketMatchHomePageProps {
 export const CricketMatchHomePage: React.FC<CricketMatchHomePageProps> = ({
   format,
 }) => {
-  const { allLoaded, cricketMatchesAll } = useFetchMatchesBySeason(format, [
-    2023,
-  ]);
-
-  const allMatches = cricketMatchesAll[0]?.matchDetails;
-
-  const [selectedMatchIndex, setSelectedMatchIndex] = useState(166);
   const [selectedScreenIndex, setSelectedScreenIndex] = useState(0);
   const [isDisplayInfo, setDisplayInfo] = useState(false);
   const [matchConfigs, setMatchConfigs] = useState<MatchConfigs[]>([]);
@@ -40,39 +32,38 @@ export const CricketMatchHomePage: React.FC<CricketMatchHomePageProps> = ({
         setSelectedScreenIndex(selectedScreenIndex - 1);
         event.preventDefault();
       }
-      if (
-        event.originalEvent?.key === "ArrowUp" &&
-        selectedMatchIndex < allMatches.length
-      ) {
-        setSelectedMatchIndex(selectedMatchIndex + 1);
-        event.preventDefault();
-      }
-      if (event.originalEvent?.key === "ArrowDown" && selectedMatchIndex > 0) {
-        setSelectedMatchIndex(selectedMatchIndex - 1);
-        event.preventDefault();
-      }
-      if (event.originalEvent?.key === "Enter" && selectedMatchIndex > 0) {
+      if (event.originalEvent?.key === "Enter" && matchConfigs.length > 0) {
         setDisplayInfo(true);
+      }
+
+      if (event.originalEvent?.key === "p") {
+        setSelectedScreenIndex(10);
+      }
+
+      if (event.originalEvent?.key === "t") {
+        setSelectedScreenIndex(11);
+      }
+
+      if (event.originalEvent?.key === "u") {
+        setSelectedScreenIndex(0);
       }
     },
   });
+
   return (
     <>
-      {allLoaded && !isDisplayInfo && (
+      {!isDisplayInfo && (
         <MatchConfigurations setMatchConfigs={setMatchConfigs} />
       )}
-      {isDisplayInfo && allLoaded && format === Format.TEST_CRICKET && (
-        <TestCricketMatch
-          selectedMatchUrl={allMatches[selectedMatchIndex]?.href}
+      {isDisplayInfo && format === Format.TEST_CRICKET && (
+        <TestCricketMatchDetails
           selectedScreenIndex={selectedScreenIndex}
           matchConfigs={matchConfigs[0]}
         />
       )}
       {isDisplayInfo &&
-        allLoaded &&
         (format === Format.ODI || format === Format.T20_INTERNATIONAL) && (
-          <CricketMatch
-            selectedMatchUrl={allMatches[selectedMatchIndex]?.href}
+          <CricketMatchDetails
             selectedScreenIndex={selectedScreenIndex}
             format={format}
             matchConfigs={matchConfigs[0]}

@@ -1,10 +1,5 @@
 import { useQuery } from "react-query";
 import { ApiData } from "../../models/Api";
-import {
-  Batsman,
-  Bowler,
-  CricketMatch,
-} from "../../models/espn-cricinfo-models/CricketMatchModels";
 import axios, { AxiosResponse } from "axios";
 
 const fetchCricketMatchStats = (
@@ -24,8 +19,6 @@ export const useFetchMatchStatsByUrl = (url: string) => {
   const chartsSelector = divElement.querySelectorAll(
     ".ds-fill-[transparent] .ds-stroke-ui-stroke .ds-stroke-1"
   );
-
-  console.log(chartsSelector.item(0)?.innerHTML);
 
   return divElement;
 };

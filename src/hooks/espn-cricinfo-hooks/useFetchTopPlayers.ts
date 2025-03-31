@@ -1,51 +1,19 @@
 import { useQuery } from "react-query";
-import { ApiData } from "../../models/Api";
-import axios, { AxiosResponse } from "axios";
-import { Player } from "../../models/espn-cricinfo-models/CricketMatchModels";
-
-export interface TopRunScorer {
-  player: Player;
-  matches: number;
-  runs: number;
-}
-
-export interface TopWicketTaker {
-  player: Player;
-  matches: number;
-  wickets: number;
-}
-
-export interface TopSixHitter {
-  player: Player;
-  matches: number;
-  sixes: number;
-}
-
-export interface TopCatchTaker {
-  player: Player;
-  matches: number;
-  catches: number;
-}
-
-interface TopPlayers {
-  runScorers?: TopRunScorer[];
-  wicketTakers?: TopWicketTaker[];
-  mostSixes?: TopSixHitter[];
-  mostCatches?: TopCatchTaker[];
-}
-
-const fetchTopPlayers = (
-  tournament: string,
-  type: string
-): Promise<AxiosResponse<ApiData>> => {
-  return axios.get(
-    `https://www.espncricinfo.com/records/tournament/${type}/${tournament}`
-  );
-};
+import {
+  fetchTopPlayersInTournament,
+  TournamentStatsType,
+} from "./fetcherFunctions";
+import {
+  TopCatchTakerTournament,
+  TopPlayers,
+  TopRunScorerTournament,
+  TopSixHitterTournament,
+  TopWicketTakerTournament,
+} from "../../models/espn-cricinfo-models/TournamentTopPlayers";
 
 const useFetchTopRunScorers = (tournament: string) => {
   const { data } = useQuery(["most-runs"], () =>
-    fetchTopPlayers(tournament, "batting-most-runs-career")
+    fetchTopPlayersInTournament(tournament, TournamentStatsType.MostRuns)
   );
 
   const divElement = document.createElement("div");
@@ -56,7 +24,7 @@ const useFetchTopRunScorers = (tournament: string) => {
     ".ds-w-full.ds-table > tbody > tr"
   );
 
-  const topRunScorers: TopRunScorer[] = [];
+  const topRunScorers: TopRunScorerTournament[] = [];
 
   rowsSelector?.forEach((r, i) => {
     topRunScorers.push({
@@ -76,7 +44,7 @@ const useFetchTopRunScorers = (tournament: string) => {
 
 const useFetchTopWicketTakers = (tournament: string) => {
   const { data } = useQuery(["most-wickets"], () =>
-    fetchTopPlayers(tournament, "bowling-most-wickets-career")
+    fetchTopPlayersInTournament(tournament, TournamentStatsType.MostWickets)
   );
 
   const divElement = document.createElement("div");
@@ -87,7 +55,7 @@ const useFetchTopWicketTakers = (tournament: string) => {
     ".ds-w-full.ds-table > tbody > tr"
   );
 
-  const topWicketTakers: TopWicketTaker[] = [];
+  const topWicketTakers: TopWicketTakerTournament[] = [];
 
   rowsSelector?.forEach((r, i) => {
     topWicketTakers.push({
@@ -109,7 +77,7 @@ const useFetchTopWicketTakers = (tournament: string) => {
 
 const useFetchTopSixHitters = (tournament: string) => {
   const { data } = useQuery(["most-sixes"], () =>
-    fetchTopPlayers(tournament, "batting-most-sixes-career")
+    fetchTopPlayersInTournament(tournament, TournamentStatsType.MostSixes)
   );
 
   const divElement = document.createElement("div");
@@ -120,7 +88,7 @@ const useFetchTopSixHitters = (tournament: string) => {
     ".ds-w-full.ds-table > tbody > tr"
   );
 
-  const topSixHitters: TopSixHitter[] = [];
+  const topSixHitters: TopSixHitterTournament[] = [];
 
   rowsSelector?.forEach((r, i) => {
     topSixHitters.push({
@@ -142,7 +110,7 @@ const useFetchTopSixHitters = (tournament: string) => {
 
 const useFetchTopCatchTakers = (tournament: string) => {
   const { data } = useQuery(["most-catches"], () =>
-    fetchTopPlayers(tournament, "fielding-most-catches-career")
+    fetchTopPlayersInTournament(tournament, TournamentStatsType.MostCatches)
   );
 
   const divElement = document.createElement("div");
@@ -153,7 +121,7 @@ const useFetchTopCatchTakers = (tournament: string) => {
     ".ds-w-full.ds-table > tbody > tr"
   );
 
-  const topCatchTakers: TopCatchTaker[] = [];
+  const topCatchTakers: TopCatchTakerTournament[] = [];
 
   rowsSelector?.forEach((r, i) => {
     topCatchTakers.push({
